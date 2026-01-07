@@ -1,0 +1,13 @@
+<div style="margin-top: 20px; margin-bottom: 20px">
+  <%= link_to "Atrás", products_path, class: "button-primary" %>
+</div>
+<% cache @product do %>
+<%= render "inventory", product: @product %>
+
+<%= image_tag @product.featured_image, style: "width: 100px" if @product.featured_image.attached? %>
+<h2>
+  <%= @product.name %>
+</h2>
+
+<p><%= @product.description  %></p>
+<% end %>

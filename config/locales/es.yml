@@ -1,0 +1,14 @@
+es:
+  common:
+    cancel: "Cancelar"
+    edit: "Editar"
+    delete: "Eliminar"
+    sure: "¿Estás seguro?"
+    login: "Inicio"
+    logOut: "Cerrar sesión"
+  subscribers:
+    create:
+      successful: "Ahora estás suscrito"
+  products:
+    new:
+      title: Agregar nueva guitarra

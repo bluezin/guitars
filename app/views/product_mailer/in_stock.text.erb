@@ -1,0 +1,7 @@
+¡Nuevas noticias!
+
+<%= @product.name %> está de nuevo disponible.
+<%= product_url(@product) %>
+
+Darse de baja: <%= unsubscribe_url(token: params[:subscriber].generate_token_for(:unsubscribe)) %>
+

@@ -1,0 +1,8 @@
+<h1>¡Nuevas noticias!</h1>
+
+<p>
+  <%= link_to @product.name, product_url(@product) %> está de nuevo disponible.
+</p>
+
+<%= link_to "Darse de baja", unsubscribe_url(token: params[:subscriber].generate_token_for(:unsubscribe)) %>
+
