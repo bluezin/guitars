@@ -37,5 +37,13 @@
       </div>
 
       <%= yield %>
+
+      <script>
+        document.getElementById("pay").addEventListener("click", async () => {
+          const res = await fetch("/checkout", { method: "POST" });
+          const data = await res.json();
+          window.location.href = data.init_point;
+        });
+      </script>
   </body>
 </html>
