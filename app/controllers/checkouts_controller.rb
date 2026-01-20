@@ -6,43 +6,40 @@ class CheckoutsController < ApplicationController
   allow_unauthenticated_access only: %i[create success failure pending]
 
   def create
-    uri = URI("#{ENV['API_URL_MERCADO_PAGO']}")
+    order = Order.find(params[:order_id])
 
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-
-    request = Net::HTTP::Post.new(uri)
-    request["Authorization"] = "Bearer #{ENV['MP_ACCESS_TOKEN']}"
-    request["Content-Type"] = "application/json"
-
-    request.body = {
-      items: [
+    body = {
+      items: order.order_items.map do |item|
         {
-          title: "Producto prueba",
-          quantity: 1,
-          unit_price: 100.0,
+          title: item.product.name,
+          quantity: item.quantity,
+          unit_price: (item.quantity * item.price).to_i,
           currency_id: "PEN"
         }
-      ],
+      end,
       back_url: {
         success: "#{ENV['BASE_URL']}/success",
         failure: "#{ENV['BASE_URL']}/failure",
         pending: "#{ENV['BASE_URL']}/pending"
-      }
+      },
+      external_reference: order.id.to_s,
+      notification_url: "https://ec09dcfacf1e.ngrok-free.app/webhooks/mercadopago"
     }.to_json
 
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    response = MercadoPagoClient.create_preference(body)
 
-    response = http.request(request)
-    body = JSON.parse(response.body)
+    redirect_url =
+      if Rails.env.development?
+        response["init_point"]
+      else
+        response["init_point"]
+      end
 
-    render json: {
-      init_point: body["init_point"]
-    }
+    redirect_to redirect_url, allow_other_host: true
   end
 
   def success
-    render plain: "Pago exitoso"
+    @order = Order.find(params[:external_reference])
   end
 
   def failure

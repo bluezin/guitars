@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
   has_many :subscribers, dependent: :destroy
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_rich_text :description
   has_one_attached :featured_image
+  has_many_attached :media
 
   validates :name, presence: true
   validates :inventory_count, numericality: { greater_than_or_equal_to: 0 }

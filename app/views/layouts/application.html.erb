@@ -38,12 +38,72 @@
 
       <%= yield %>
 
-      <script>
-        document.getElementById("pay").addEventListener("click", async () => {
-          const res = await fetch("/checkout", { method: "POST" });
-          const data = await res.json();
-          window.location.href = data.init_point;
+    <script>
+      document.addEventListener("turbo:load", () => {
+        const input   = document.getElementById("media_input");
+        const preview = document.getElementById("preview");
+
+        if (!input || !preview) return;
+
+        let filesArray = [];
+
+        input.addEventListener("change", (e) => {
+          const newFiles = Array.from(e.target.files);
+          filesArray = filesArray.concat(newFiles);
+          renderPreview();
         });
-      </script>
+
+        function syncInputFiles() {
+          const dataTransfer = new DataTransfer();
+          filesArray.forEach(file => dataTransfer.items.add(file));
+          input.files = dataTransfer.files;
+        }
+
+        function renderPreview() {
+          preview.innerHTML = "";
+
+          filesArray.forEach((file, index) => {
+            const wrapper = document.createElement("div");
+            wrapper.style.position = "relative";
+            wrapper.style.display = "inline-block";
+            wrapper.style.margin = "8px";
+
+            let mediaEl;
+
+            // 🔥 DIFERENCIAR IMAGEN vs VIDEO
+            if (file.type.startsWith("image/")) {
+              mediaEl = document.createElement("img");
+              mediaEl.src = URL.createObjectURL(file);
+            } else if (file.type.startsWith("video/")) {
+              mediaEl = document.createElement("video");
+              mediaEl.src = URL.createObjectURL(file);
+              mediaEl.controls = true;
+            } else {
+              return; // ignorar otros tipos
+            }
+
+            mediaEl.style.width = "140px";
+            mediaEl.style.height = "140px";
+
+            const button = document.createElement("button");
+            button.textContent = "Eliminar";
+            button.type = "button";
+
+            button.addEventListener("click", () => {
+              filesArray.splice(index, 1);
+              syncInputFiles();
+              renderPreview();
+            });
+
+            wrapper.appendChild(mediaEl);
+            wrapper.appendChild(button);
+            preview.appendChild(wrapper);
+          });
+
+          syncInputFiles();
+        }
+      });
+    </script>
+
   </body>
 </html>

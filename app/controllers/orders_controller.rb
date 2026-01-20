@@ -3,8 +3,11 @@ class OrdersController < ApplicationController
 
   def add_product
     product = Product.find(params[:product_id])
+    product.inventory_count -= 1
+    product.save
 
     item = @order.order_items.find_or_initialize_by(product: product)
+
     item.quantity ||=0
     item.quantity += 1
     item.price = product.price

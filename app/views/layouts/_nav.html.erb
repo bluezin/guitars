@@ -1,8 +1,6 @@
 <nav>
     <%= link_to products_path do %>
-    <h1 class="main-title">
-      MtDavid <p>GUITARS</p>
-    </h1>
+      <%= image_tag "logo.png", class: "logo" %>
     <% end %>
 
     <div class="container-articles">
@@ -18,12 +16,16 @@
           </svg>
 
           <p><%= @order.order_items.size %> artículos</p>
-          | <span>Total: <%= @order.total %></span>
+          | <span>Total: <%= @order.total.to_i %> soles</span>
+
+          <p>| Ver lista</p>
 
           <%# <%= link_to t("common.login"), root_path %>
       </div>
 
-      <button id="pay" class="button-pay">Pagar</button>
+      <%= form_with url: checkout_path(order_id: @order.id), data: { turbo: false }, method: :post do %>
+        <button class="button-pay" type="submit">Pagar</button>
+      <% end %>
 
       <div id="list-products" data-modal-target="modal" class="hidden cart-list-products">
           <svg data-controller="modal" data-action="click->modal#close" class="icon-close" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
@@ -34,7 +36,6 @@
           <% @order.order_items.each do |item| %>
             <div class="cart-item">
               <p class="cart-item-name"><%= item.product.name.capitalize %></p>
-
               <div class="cart-item-div">
               <p><%= item.quantity %> unidades</p>
 

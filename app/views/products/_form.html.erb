@@ -1,13 +1,25 @@
 <%= form_with model: product do |form| %>
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "Nombre" %>
     <%= form.text_field :name %>
   </div>
 
+  <% @product.media.each do |file| %>
+    <%= form.hidden_field :media, multiple: true, value: file.signed_id %>
+  <% end %>
+
   <div class="field">
-    <%= form.label :featured_image, style: "display: block" %>
+    <%= form.label :featured_image, "Imagen Principal", style: "display: block" %>
     <%= form.file_field :featured_image, accept: "image/*" %>
   </div>
+
+
+  <div class="field">
+    <%= form.label :media, "Puedes agregar imágenes y/o videos del producto" %>
+    <%= form.file_field :media, multiple: true, direct_upload: true, id: "media_input" , accept: "image/*,video/*"%>
+  </div>
+
+  <div id="preview"></div>
 
   <div class="field">
     <%= form.label :description, style: "display: block" %>
@@ -15,12 +27,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :inventory_count, style: "display: block" %>
+    <%= form.label :inventory_count, "Cantidad disponible", style: "display: block" %>
     <%= form.number_field :inventory_count %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price, "Precio" %>
     <%= form.number_field :price %>
   </div>
 

@@ -12,6 +12,11 @@ class OrderItemsController < ApplicationController
       notice = "Cantidad actualizada"
     end
 
+    product = Product.find_by(id: item.product_id)
+
+    product.inventory_count = product.inventory_count + 1
+    product.save
+
     redirect_back fallback_location: products_path, notice: notice
   end
 end

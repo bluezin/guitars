@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
 
   def index
-    @products = Product.order(updated_at: :desc)
+    @products = Product.order(created_at: :asc)
   end
 
   def show
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price ])
+    params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price, media: [] ])
   end
 
   def set_product

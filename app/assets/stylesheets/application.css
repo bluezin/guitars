@@ -15,6 +15,7 @@ body {
   padding: 30px;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #fdf9f3;
 }
 
 a {
@@ -29,7 +30,6 @@ nav {
   justify-content: space-between;
   display: flex;
   font-size: 1rem;
-  background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -131,15 +131,14 @@ nav {
 .list-products-item-title {
   text-align: center;
   font-weight: 500;
-  color: black;
+  color: #374151;
   text-transform: uppercase;
 }
 
 .list-products-item-description {
   font-size: 14px;
-  color: black;
+  color: #374151;
   text-transform: capitalize;
-  margin: 8px 4px 8px;
 }
 
 .list-products-item-price {
@@ -148,18 +147,20 @@ nav {
   border-radius: 10px;
   padding: 10px;
   font-weight: 600;
-  margin: 0 10px;
-  color: white;
+  color: 374151;
 }
 
 .list-products-item {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   padding: 10px 0;
+  /* background-color: #4b4733; */
+  width: 300px;
+  height: 500px;
 }
 
 .list-products-item-data {
-  padding: 20px 0px 20px 20px;
+  padding: 20px;
 }
 
 .container-buttons {
@@ -170,11 +171,17 @@ nav {
 }
 
 .button-edit {
+  background-color: transparent;
+  border: none;
+}
+
+.button-edit a {
   background-color: #cea11b;
   border: none;
-  padding: 10px;
+  padding: 13px;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .button-edit a {
@@ -182,16 +189,17 @@ nav {
 }
 
 .button-delete {
-  border: 2px solid #cea11b;
+  border: 2px solid rgb(226, 166, 13);
   color: black;
   background-color: white;
   border-radius: 10px;
   padding: 10px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .button-primary {
-  background-color: #cea11b;
+  background-color: rgb(226, 166, 13);
   color: white;
   border: none;
   padding: 8px;
@@ -236,9 +244,8 @@ nav {
   align-items: center;
   gap: 10px;
   color: black;
-  justify-content: end;
   text-decoration: underline;
-  margin-right: 10px;
+  margin: 10px 0 10px;
 }
 
 .container-buttons-cart {
@@ -253,10 +260,10 @@ nav {
   background-color: rgb(226, 166, 13);
   color: white;
   border: none;
-  padding: 5px 7px;
+  padding: 10px;
   font-weight: 500;
+  font-size: 14px;
   border-radius: 7px;
-  border: 2px solid rgb(226, 166, 13);
 }
 
 .button-remove-cart {
@@ -279,10 +286,10 @@ nav {
   z-index: 10;
   border-radius: 10px;
   border: 2px solid rgb(226, 166, 13);
-  width: 230px;
-  top: 100px;
+  top: 110px;
   height: 150px;
   overflow-y: scroll;
+  width: 280px;
 }
 
 
@@ -331,6 +338,60 @@ nav {
   right: 5px;
   top: 6px;
   cursor: pointer;
+}
+
+.link-show-more {
+  text-align: center;
+  display: block;
+  color: #374151;
+  text-decoration: underline;
+}
+
+.exhausted {
+  text-align: center;
+  margin-top: 10px;
+  color: red;
+}
+
+.logo {
+  width: 140px;
+  height: 70px;
+}
+
+.show-data {
+  display: flex;
+  gap: 40px;
+  width: 60%;
+  align-items: start;
+  justify-content: center;
+  margin: auto;
+}
+
+.show-main-image {
+  width: auto;
+  height: 200px;
+}
+
+.show-more-images {
+  width: 80%;
+  margin: 40px auto auto auto;
+}
+
+.multiple-images {
+  width: auto;
+  height: 300px;
+}
+
+.show-button-add-cart {
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  margin-top: 10px;
+}
+
+.show-video {
+  width: auto;
+  height: 200px;
 }
 
 @media screen and (max-width: 900px) {
