@@ -6,10 +6,10 @@ class OrderItemsController < ApplicationController
 
     if item.quantity <= 1
       item.destroy
-      notice = "Producto eliminado del carrito"
+      notice = t("orderItems.productRemoved")
     else
       item.decrement!(:quantity)
-      notice = "Cantidad actualizada"
+      notice = t("orderItems.updatedAmount")
     end
 
     product = Product.find_by(id: item.product_id)

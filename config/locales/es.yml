@@ -4,11 +4,37 @@ es:
     edit: "Editar"
     delete: "Eliminar"
     sure: "¿Estás seguro?"
-    login: "Inicio"
     logOut: "Cerrar sesión"
-  subscribers:
-    create:
-      successful: "Ahora estás suscrito"
+    back: "Atrás"
+    pay: "Pagar"
+    moreInformation: "Más información"
+    currency: "soles"
+    articles: "artículos"
+    total: "Total"
+    addToCart: "Agregar al carrito"
+  session:
+    again: "Pruebe con otra dirección de correo electrónico o contraseña."
+  password:
+    again: "Inténtalo de nuevo más tarde."
+    instructions: "Instrucciones de restablecimiento de contraseña enviadas (si existe un usuario con esa dirección de correo electrónico)."
+    reset: "La contraseña ha sido restablecida."
+    match: "Las contraseñas no coincidieron."
+    linkInvalidOrExpired: "El enlace de restablecimiento de contraseña no es válido o ha expirado."
+  order:
+    addedProduct: "Producto agregado al carrito"
+  orderItems:
+    productRemoved: "Producto eliminado del carrito"
+    updatedAmount: "Cantidad actualizada"
   products:
+    show:
+      seeMore: "Ver más imagenes y/o videos"
+      price: "Precio"
+      availableQuantities: "Cantidades disponibles"
+    index:
+      createGuitar: "Crea una nueva guitarra"
+      exhausted: "Agotado"
+      description: "Descripción"
+      price: "Precio"
+      availableQuantities: "Cantidades disponibles"
     new:
-      title: Agregar nueva guitarra
+      title: "Agregar nueva guitarra"

@@ -1,32 +1,39 @@
 Rails.application.routes.draw do
-  resource :session
-  resources :passwords, param: :token
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "products#index"
-  resources :products do
-    resources :subscribers, only: [ :create ]
+  concern :localized do
+    resource :session
+    resources :passwords, param: :token
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+    # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+    # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+    root "products#index"
+    resources :products do
+      resources :subscribers, only: [ :create ]
+    end
+
+    resource :unsubscribe, only: [ :show ]
+
+    resources :orders do
+      post :add_product, on: :member
+    end
+
+    get "/cart", to: "orders#show", as: :cart
+
+    resources :order_items, only: [ :destroy ]
+
+    post "/checkout", to: "checkouts#create"
+
+    get "/success", to: "checkouts#success"
+    get "/failure", to: "checkouts#failure"
+    get "/pending", to: "checkouts#pending"
   end
 
-  resource :unsubscribe, only: [ :show ]
-
-  resources :orders do
-    post :add_product, on: :member
+  scope "(:locale)", locale: /es|en/ do
+    concerns :localized
   end
-
-  get "/cart", to: "orders#show", as: :cart
-
-  resources :order_items, only: [ :destroy ]
-
-  post "/checkout", to: "checkouts#create"
-
-  get "/success", to: "checkouts#success"
-  get "/failure", to: "checkouts#failure"
-  get "/pending", to: "checkouts#pending"
 
   post "/webhooks/mercadopago", to: "webhooks#mercadopago"
 

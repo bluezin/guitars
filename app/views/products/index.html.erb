@@ -1,10 +1,15 @@
 <% if authenticated? %>
   <button class="button-create-guitar">
-  <%= link_to "Crea una nueva guitarra", new_product_path %>
+  <%= link_to t(".createGuitar"), new_product_path %>
   </button>
 
   <%= button_to t("common.logOut"), session_path, class: "button-secondary", style: "margin-top: 10px", method: :delete if authenticated? %>
 <% end %>
+
+<div class="languages">
+  <%= button_to "Español", url_for(locale: :es), method: :get, class: I18n.locale == :es ? "active" : "" %>
+  <%= button_to "English", url_for(locale: :en), method: :get, class: I18n.locale == :en ? "active" : "" %>
+</div>
 
 <div class="list-products">
   <% @products.each do |product| %>
@@ -19,29 +24,29 @@
 
     <% if product.inventory_count > 0 %>
       <div class="container-buttons-cart">
-        <%= button_to "Agregar al carrito", add_product_order_path(@order, product_id: product.id), method: :post, class: "button-add-cart" %>
+        <%= button_to t("common.addToCart"), add_product_order_path(@order, product_id: product.id), method: :post, class: "button-add-cart" %>
       </div>
     <% else %>
-      <p class="exhausted">Agotado</p>
+      <p class="exhausted"><%= t(".exhausted") %></p>
     <% end%>
 
     <div class="list-products-item-data">
-      <strong>Descripción:</strong>
+      <strong><%= t(".description") %>:</strong>
       <span class="list-products-item-description">
         <%= truncate(product.description.to_plain_text, length: 70) %>
       </span>
       <br />
       <br />
-      <strong>Precio:</strong>
-      <span><%= product.price %> soles</span>
+      <strong><%= t(".price") %>:</strong>
+      <span><%= product.price %> <%= t("common.currency") %></span>
       <br />
       <br />
-      <strong>Cantidades disponibles:</strong>
+      <strong><%= t(".availableQuantities") %>:</strong>
       <span><%= product.inventory_count %></span>
     </div>
 
-      <%= link_to product_path(id: product.id), class: "link-show-more" do %>
-        <span>Más información</span>
+      <%= link_to product_path(product), class: "link-show-more" do %>
+        <span><%= t("common.moreInformation") %></span>
       <% end %>
     </div>
   <% end %>
