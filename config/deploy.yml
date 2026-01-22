@@ -30,6 +30,7 @@ registry:
   # server: localhost:5555
 
   # Needed for authenticated registries.
+  skip_validation: true
   username: yadiracondezo
 
   # Always use an access token rather than real password when possible.
