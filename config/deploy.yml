@@ -2,12 +2,12 @@
 service: guitars
 
 # Name of the container image (use your-user/app-name on external registries).
-image: yadiracondezo/guitars
+image: guitars
 
 # Deploy to these servers.
 servers:
   web:
-    - 46.225.3.58
+    - 192.168.0.1
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -27,11 +27,10 @@ servers:
 # Where you keep your container images.
 registry:
   # Alternatives: hub.docker.com / registry.digitalocean.com / ghcr.io / ...
-  # server: localhost:5555
+  server: localhost:5555
 
   # Needed for authenticated registries.
-  skip_validation: true
-  username: yadiracondezo
+  # username: your-user
 
   # Always use an access token rather than real password when possible.
   # password:
