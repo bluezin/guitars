@@ -85,8 +85,10 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+  <<: *default
   primary: &primary_production
-    <<: *default
+    host: <%= ENV["DB_HOST"] %>
+    port: 5432
     database: guitars_production
     username: guitars
     password: <%= ENV["GUITARS_DATABASE_PASSWORD"] %>

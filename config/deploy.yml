@@ -2,12 +2,12 @@
 service: guitars
 
 # Name of the container image (use your-user/app-name on external registries).
-image: guitars
+image: yadiracondezo/guitars
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 46.225.3.58
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -27,20 +27,26 @@ servers:
 # Where you keep your container images.
 registry:
   # Alternatives: hub.docker.com / registry.digitalocean.com / ghcr.io / ...
-  server: localhost:5555
+  # server: localhost:5555
 
   # Needed for authenticated registries.
-  # username: your-user
+  username: yadiracondezo
 
   # Always use an access token rather than real password when possible.
-  # password:
+  password: <%= ENV["GUITARS_DOCKER_PASSWORD"] %>
   #   - KAMAL_REGISTRY_PASSWORD
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
     - RAILS_MASTER_KEY
+    - GUITARS_DATABASE_PASSWORD
   clear:
+    RAILS_ENV: production
+    RAILS_LOG_TO_STDOUT: "1"
+    DB_HOST: guitars-db
+    DB_NAME: guitars_production
+    DB_USER: guitars
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true
@@ -96,22 +102,25 @@ builder:
 #   user: app
 
 # Use accessory services (secrets come from .kamal/secrets).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
+accessories:
+  db:
+    image: postgres:15
+    host: 46.225.3.58
 #     # Change to 3306 to expose port to the world instead of just local network.
-#     port: "127.0.0.1:3306:3306"
-#     env:
-#       clear:
+    port: 5432
+    env:
+      clear:
+        POSTGRES_DB: guitars_production
+        POSTGRES_USER: guitars
+        POSTGRES_PASSWORD: <%= ENV["GUITARS_DATABASE_PASSWORD"] %>
 #         MYSQL_ROOT_HOST: '%'
 #       secret:
 #         - MYSQL_ROOT_PASSWORD
 #     files:
 #       - config/mysql/production.cnf:/etc/mysql/my.cnf
 #       - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
+    directories:
+      - data:/var/lib/postgresql/data
 #   redis:
 #     image: valkey/valkey:8
 #     host: 192.168.0.2
