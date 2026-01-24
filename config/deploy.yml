@@ -41,12 +41,16 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - GUITARS_DATABASE_PASSWORD
+    - MP_ACCESS_TOKEN
   clear:
     RAILS_ENV: production
     RAILS_LOG_TO_STDOUT: "1"
     DB_HOST: guitars-db
     DB_NAME: guitars_production
     DB_USER: guitars
+    API_URL_MERCADO_PAGO: https://api.mercadopago.com
+    BASE_URL: http://46.225.3.58
+    APP_URL: http://46.225.3.58
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true

@@ -23,7 +23,7 @@ class CheckoutsController < ApplicationController
         pending: "#{ENV['BASE_URL']}/pending"
       },
       external_reference: order.id.to_s,
-      notification_url: "https://ec09dcfacf1e.ngrok-free.app/webhooks/mercadopago"
+      notification_url: "#{ENV['APP_URL']}/webhooks/mercadopago"
     }.to_json
 
     response = MercadoPagoClient.create_preference(body)
