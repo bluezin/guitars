@@ -85,8 +85,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
   primary: &primary_production
+    adapter: postgresql
+    encoding: unicode
     host: <%= ENV["DB_HOST"] %>
     port: 5432
     database: guitars_production
