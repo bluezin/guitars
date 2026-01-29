@@ -39,7 +39,7 @@ class CheckoutsController < ApplicationController
   end
 
   def success
-    @order = Order.find(params[:external_reference])
+    redirect_to root_path, notice: "Estamos procesando tu pago 🙌"
   end
 
   def failure
