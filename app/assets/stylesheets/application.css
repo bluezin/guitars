@@ -418,6 +418,19 @@ nav {
   font-weight: 600;
 }
 
+.success-order-label {
+  font-size: 18px;
+}
+
+.success-order-li {
+  font-size: 18px;
+}
+
+.success-btn {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 1015px) {
   .list-products {
     grid-template-columns: auto auto;

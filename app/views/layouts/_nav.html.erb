@@ -3,6 +3,7 @@
       <%= image_tag "logo.png", class: "logo" %>
     <% end %>
 
+    <% if @order.status != 'approved' %>
     <div class="container-articles">
       <div class="shopping-cart" data-controller="modal" data-action="click->modal#open">
         <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 1024 1024" class="icon" version="1.1" fill="#000000">
@@ -25,9 +26,11 @@
           <%# <%= link_to t("common.login"), root_path %>
       </div>
 
+    <% unless @order&.order_items.empty? %>
       <%= form_with url: checkout_path(order_id: @order.id), data: { turbo: false }, method: :post do %>
         <button class="button-pay" type="submit"><%= t("common.pay") %></button>
       <% end %>
+    <% end %>
 
       <div id="list-products" data-modal-target="modal" class="hidden cart-list-products">
           <svg data-controller="modal" data-action="click->modal#close" class="icon-close" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
@@ -60,4 +63,5 @@
           <% end %>
       </div>
     </div>
+    <% end %>
 </nav>

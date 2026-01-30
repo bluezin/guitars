@@ -23,6 +23,8 @@ class WebhooksController < ApplicationController
 
     case payment["status"]
     when "approved"
+      return head :ok if order.mp_payment_id.present?
+
       order.update!(
         status: :approved,
         mp_payment_id: payment["id"],

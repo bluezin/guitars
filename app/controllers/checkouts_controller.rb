@@ -17,10 +17,10 @@ class CheckoutsController < ApplicationController
           currency_id: "PEN"
         }
       end,
-      back_url: {
-        success: "#{ENV['BASE_URL']}/success",
-        failure: "#{ENV['BASE_URL']}/failure",
-        pending: "#{ENV['BASE_URL']}/pending"
+      back_urls: {
+        success: "#{ENV['APP_URL']}/success",
+        failure: "#{ENV['APP_URL']}/failure",
+        pending: "#{ENV['APP_URL']}/pending"
       },
       external_reference: order.id.to_s,
       notification_url: "#{ENV['APP_URL']}/webhooks/mercadopago"
@@ -39,7 +39,9 @@ class CheckoutsController < ApplicationController
   end
 
   def success
-    redirect_to root_path, notice: "Estamos procesando tu pago 🙌"
+    @order = Order.find_by(id: params[:external_reference])
+
+    render :success
   end
 
   def failure
