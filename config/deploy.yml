@@ -22,7 +22,7 @@ servers:
 #
 proxy:
   ssl: false
-  host: tingo.pe
+  host: mtdavid.com.pe
 
 # Where you keep your container images.
 registry:
