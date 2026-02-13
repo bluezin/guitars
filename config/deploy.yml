@@ -22,7 +22,9 @@ servers:
 #
 proxy:
   ssl: false
-  host: mtdavid.com.pe
+  hosts:
+    - mtdavid.com.pe
+    - www.mtdavid.com.pe
 
 # Where you keep your container images.
 registry:
