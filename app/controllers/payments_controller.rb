@@ -20,6 +20,7 @@ class PaymentsController < ApplicationController
     if !@form_token
       result = IzipayService.create_payment(
         amount: 1000,
+        email: "yadiraco304@gmail.com",
         notificationUrl: izipay_callback_url
       )
 
