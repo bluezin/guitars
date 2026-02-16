@@ -3,7 +3,7 @@
       <%= image_tag "logo.png", class: "logo" %>
     <% end %>
 
-    <% if @order.status != 'approved' %>
+    <% if @order&.status != 'approved' %>
     <div class="container-articles">
       <div class="shopping-cart" data-controller="modal" data-action="click->modal#open">
         <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 1024 1024" class="icon" version="1.1" fill="#000000">
@@ -16,8 +16,8 @@
             </g>
           </svg>
 
-          <p><%= @order.order_items.size %> <%= t("common.articles") %></p>
-          | <span><%= t("common.total") %>: <%= @order.total.to_i %> <%= t("common.currency") %></span> |
+          <p><%= @order&.order_items&.size %> <%= t("common.articles") %></p>
+          | <span><%= t("common.total") %>: <%= @order&.total.to_i %> <%= t("common.currency") %></span> |
 
           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9944 15.5C13.9274 15.5 15.4944 13.933 15.4944 12C15.4944 10.067 13.9274 8.5 11.9944 8.5C10.0614 8.5 8.49439 10.067 8.49439 12C8.49439 13.933 10.0614 15.5 11.9944 15.5ZM11.9944 13.4944C11.1691 13.4944 10.5 12.8253 10.5 12C10.5 11.1747 11.1691 10.5056 11.9944 10.5056C12.8197 10.5056 13.4888 11.1747 13.4888 12C13.4888 12.8253 12.8197 13.4944 11.9944 13.4944Z" fill="#0F0F0F"/>
@@ -26,10 +26,8 @@
           <%# <%= link_to t("common.login"), root_path %>
       </div>
 
-    <% unless @order&.order_items.empty? %>
-      <%= form_with url: checkout_path(order_id: @order.id), data: { turbo: false }, method: :post do %>
-        <button class="button-pay" type="submit"><%= t("common.pay") %></button>
-      <% end %>
+    <% unless @order&.order_items&.empty? %>
+      <%= button_to t("common.pay"), checkout_path, method: :get, class: "button-pay" %>
     <% end %>
 
       <div id="list-products" data-modal-target="modal" class="hidden cart-list-products">
@@ -38,7 +36,7 @@
             <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
 
-          <% @order.order_items.each do |item| %>
+          <% @order&.order_items&.each do |item| %>
             <div class="cart-item">
               <p class="cart-item-name"><%= item.product.name.capitalize %></p>
               <div class="cart-item-div">

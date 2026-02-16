@@ -24,11 +24,16 @@ Rails.application.routes.draw do
 
     resources :order_items, only: [ :destroy ]
 
-    post "/checkout", to: "checkouts#create"
+    # post "/checkout", to: "checkouts#create"
 
-    get "/success", to: "checkouts#success"
+    # get "/success", to: "checkouts#success"
     get "/failure", to: "checkouts#failure"
     get "/pending", to: "checkouts#pending"
+
+    # izipay
+    get "/checkout", to: "payments#create"
+    get "/success", to: "payments#success"
+    post "/izipay_callback", to: "payments#izipay_callback"
   end
 
   scope "(:locale)", locale: /es|en/ do

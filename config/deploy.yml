@@ -44,6 +44,9 @@ env:
     - RAILS_MASTER_KEY
     - GUITARS_DATABASE_PASSWORD
     - MP_ACCESS_TOKEN
+    - IZIPAY_PUBLIC_KEY
+    - IZIPAY_SHA_KEY
+    - IZIPAY_PASSWORD
   clear:
     RAILS_ENV: production
     RAILS_LOG_TO_STDOUT: "1"
@@ -53,6 +56,9 @@ env:
     API_URL_MERCADO_PAGO: https://api.mercadopago.com
     BASE_URL: http://46.225.60.127
     APP_URL: http://46.225.60.127
+    IZIPAY_USERNAME: 41788173
+    IZIPAY_MERCHANT_CODE: 5909937
+    IZIPAY_BASE_URL: https://api.micuentaweb.pe
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true

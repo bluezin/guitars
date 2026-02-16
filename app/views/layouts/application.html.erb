@@ -21,6 +21,19 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <script
+      type="text/javascript"
+      src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
+      kr-public-key="<%= ENV["IZIPAY_PUBLIC_KEY"] %>"
+      kr-get-url-success="<%= success_path %>"
+      kr-language="es">
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
+    <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
+    </head>
   </head>
 
   <body>
