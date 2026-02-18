@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
     resources :orders do
       post :add_product, on: :member
+      # izipay
+      get :checkout
+      get :success
     end
 
     get "/cart", to: "orders#show", as: :cart
@@ -31,9 +34,9 @@ Rails.application.routes.draw do
     get "/pending", to: "checkouts#pending"
 
     # izipay
-    get "/checkout", to: "payments#create"
-    get "/success", to: "payments#success"
     post "/izipay_callback", to: "payments#izipay_callback"
+    #
+    get "/historical-overview", to: "stories#index", as: :stories
   end
 
   scope "(:locale)", locale: /es|en/ do

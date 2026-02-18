@@ -26,7 +26,7 @@
       type="text/javascript"
       src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
       kr-public-key="<%= ENV["IZIPAY_PUBLIC_KEY"] %>"
-      kr-get-url-success="<%= success_path %>"
+      kr-get-url-success="<%= order_success_path(@order) %>"
       kr-language="es">
     </script>
     <link
@@ -49,7 +49,11 @@
         <%= flash[:alert] %>
       </div>
 
-      <%= yield %>
+      <div class="container-general">
+        <%= yield %>
+      </div>
+
+      <%= render "layouts/footer" %>
 
     <script>
       document.addEventListener("turbo:load", () => {

@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <h2 class="footer-logo">MtDavid</h2>
+      <p>Comprometidos a darte el mejor producto.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Sobre nosotros</h4>
+      <%= link_to "Conoce nuestra historia", stories_path %>
+
+      <div class="social">
+        <p>Contáctanos:</p>
+        <%= link_to "https://www.facebook.com/Mtdavidguitars", target: "_blank", rel: "noopener" do %>
+          <%= image_tag "facebook.png", style: "width: 20px; height: 20px" %> Facebook
+        <% end %>
+
+        <%= link_to "https://www.tiktok.com/@mtdavid_guitars?_r=1&_t=ZS-941q5cGDfcb", target: "_blank", rel: "noopener" do %>
+          <%= image_tag "tiktok.png", style: "width: 20px; height: 20px" %> TikTok
+        <% end %>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h4>Soporte</h4>
+      <p style="display: flex; align-items: center; gap: 10px" class="footer-email"><%= image_tag "email.svg" %> mtdavidguitars@gmail.com</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © <%= Time.current.year %> MtDavid — Todos los derechos reservados
+  </div>
+</footer>
