@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       post :add_product, on: :member
       # izipay
       get :checkout
-      post :success
+      get :success
     end
 
     get "/cart", to: "orders#show", as: :cart
