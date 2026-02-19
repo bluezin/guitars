@@ -12,6 +12,13 @@ es:
     articles: "artículos"
     total: "Total"
     addToCart: "Agregar al carrito"
+  footer:
+    description: "Comprometidos a darte el mejor producto."
+    aboutUs: "Sobre nosotros"
+    history: "Conoce nuestra historia"
+    contactUs: "Contáctanos:"
+    technicalSupport: "Soporte"
+    rightsReserved: "Todos los derechos reservados"
   session:
     again: "Pruebe con otra dirección de correo electrónico o contraseña."
   password:
@@ -20,8 +27,21 @@ es:
     reset: "La contraseña ha sido restablecida."
     match: "Las contraseñas no coincidieron."
     linkInvalidOrExpired: "El enlace de restablecimiento de contraseña no es válido o ha expirado."
-  order:
+  orders:
     addedProduct: "Producto agregado al carrito"
+    checkout:
+      pay: "Pagar"
+      note: "Nota importante:"
+      contentNote: "Si quieres pagar con YAPE, debe ser en coordinación con"
+    success:
+      title: "Pago realizado con exito"
+      orderNumber: "N° de pedido:"
+      summary: "Resumen de tu compra"
+      total: "Total"
+      pickUp: "Para el recojo de tu pedido, puedes contactarte con"
+      tahnkiu: "Gracias por confiar en MtDavid Guitars"
+      backToTop: "Volver al inicio"
+      confirmPay: "Estamos confirmando tu pago…"
   orderItems:
     productRemoved: "Producto eliminado del carrito"
     updatedAmount: "Cantidad actualizada"

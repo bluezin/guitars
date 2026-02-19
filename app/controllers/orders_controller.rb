@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     item.price = product.price
     item.save
 
-    redirect_to products_path, notice: t("order.addedProduct")
+    redirect_to products_path, notice: t("orders.addedProduct")
   end
 
   def show

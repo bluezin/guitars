@@ -3,15 +3,15 @@
 
     <div class="footer-section">
       <h2 class="footer-logo">MtDavid</h2>
-      <p>Comprometidos a darte el mejor producto.</p>
+      <p><%= t("footer.description") %></p>
     </div>
 
     <div class="footer-section">
-      <h4>Sobre nosotros</h4>
-      <%= link_to "Conoce nuestra historia", stories_path %>
+      <h4><%= t("footer.aboutUs") %></h4>
+      <%= link_to t("footer.history"), stories_path %>
 
       <div class="social">
-        <p>Contáctanos:</p>
+        <p><%= t("footer.contactUs") %></p>
         <%= link_to "https://www.facebook.com/Mtdavidguitars", target: "_blank", rel: "noopener" do %>
           <%= image_tag "facebook.png", style: "width: 20px; height: 20px" %> Facebook
         <% end %>
@@ -23,13 +23,13 @@
     </div>
 
     <div class="footer-section">
-      <h4>Soporte</h4>
+      <h4><%= t("footer.technicalSupport") %></h4>
       <p style="display: flex; align-items: center; gap: 10px" class="footer-email"><%= image_tag "email.svg" %> mtdavidguitars@gmail.com</p>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-    © <%= Time.current.year %> MtDavid — Todos los derechos reservados
+    © <%= Time.current.year %> MtDavid — <%= t("footer.rightsReserved") %>
   </div>
 </footer>

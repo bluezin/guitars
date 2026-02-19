@@ -1,8 +1,8 @@
 <% if @order.status == "approved" %>
-<h1>Pago realizado con exito ✅</h1>
-<p class="success-order-label"><strong>N° de pedido:</strong> <%= @order.id %></p>
+<h1><%= t(".title") %> ✅</h1>
+<p class="success-order-label"><strong><%= t(".orderNumber") %></strong> <%= @order.id %></p>
 
-<h3>Resumen de tu compra</h3>
+<h3><%= t(".summary") %></h3>
 
 <ul>
   <% @order.order_items.each do |item| %>
@@ -12,9 +12,9 @@
   <% end %>
 </ul>
 
-<p class="success-order-label"><strong>Total:</strong> S/. <%= @order.total %></p>
+<p class="success-order-label"><strong><%= t(".total") %></strong> S/. <%= @order.total %></p>
 <br />
-<p class="success-order-label">Para el recojo de tu pedido, puedes contactarte con</p>
+<p class="success-order-label"><%= t(".pickUp") %></p>
   <%= link_to "https://wa.me/51934255287?text=Hola%20sobre%20el%20recojo", target: "_blank" , class: "link-whatsapp", rel: "noopener" do %>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48" fill="none">
     <path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="#25D366"/>
@@ -24,11 +24,11 @@
   <% end %>
 
 <br />
-<strong>🎸 Gracias por confiar en MtDavid Guitars</strong>
+<strong>🎸 <%= t(".tahnkiu") %></strong>
 <br />
 <br />
-<%= link_to "Volver al inicio", root_path, class: "success-btn" %>
+<%= link_to t(".backToTop"), root_path, class: "success-btn" %>
 
 <% else %>
-<h1>Estamos confirmando tu pago…</h1>
+<h1><%= t(".confirmPay") %></h1>
 <% end %>

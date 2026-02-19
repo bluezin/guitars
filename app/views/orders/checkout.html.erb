@@ -1,6 +1,6 @@
 <div style="padding-top: 20px">
   <p>
-    <strong>Nota importante:</strong> Si quieres pagar con YAPE, debe ser en coordinación con
+    <strong><%= t(".note") %></strong> <%= t(".contentNote") %>
     <%= link_to "https://wa.me/51934255287?text=Hola%20quiero%20pagar%20con%20YAPE", target: "_blank" , class: "link-whatsapp", rel: "noopener" do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48" fill="none">
       <path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="#25D366"/>
@@ -12,7 +12,7 @@
 
   <div style="display: flex; justify-content: center">
     <div>
-      <h2>Pagar:</h2>
+      <h2><%= t(".pay") %></h2>
 
       <div class="kr-embedded"  kr-form-token="<%= @form_token %>">
       </div>
