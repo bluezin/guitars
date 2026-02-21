@@ -6,15 +6,15 @@
   </div>
 
   <ul class="nav-center">
-    <li><%= link_to "Inicio", root_path %></li>
-    <li><%= link_to "Quiénes Somos", stories_path %></li>
-    <li><%= link_to "Contacto", contacts_path %></li>
+    <li><%= link_to t("nav.home"), root_path %></li>
+    <li><%= link_to t("nav.whoWeAre"), stories_path %></li>
+    <li><%= link_to t("nav.contact"), contacts_path %></li>
   </ul>
 
   <div class="nav-right">
     <div class="language-toggle">
-      <%= button_to "Español", url_for(locale: :es), method: :get, class: "lang-btn #{'active' if I18n.locale == :es}" %>
-      <%= button_to "English", url_for(locale: :en), method: :get, class: "lang-btn #{'active' if I18n.locale == :en}" %>
+      <%= button_to t("nav.spanish"), url_for(locale: :es), method: :get, class: "lang-btn #{'active' if I18n.locale == :es}" %>
+      <%= button_to t("nav.english"), url_for(locale: :en), method: :get, class: "lang-btn #{'active' if I18n.locale == :en}" %>
     </div>
 
     <% if @order&.status != 'approved' %>

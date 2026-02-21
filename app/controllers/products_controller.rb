@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
 
   def index
-    @products = Product.order(created_at: :asc)
+    @products = if params[:query].present?
+      Product.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      Product.all
+    end
   end
 
   def show

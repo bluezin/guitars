@@ -1,6 +1,6 @@
 <div>
-  <h2>Contacto</h2>
-  <p style="font-size: 18px">Nos puedes encontrar en nuestras redes sociales:</p>
+  <h2><%= t(".title") %></h2>
+  <p style="font-size: 18px"><%= t(".secondText") %></p>
   <br />
   <%= link_to "https://www.facebook.com/Mtdavidguitars", target: "_blank", rel: "noopener", style: "display: flex; gap: 10px; padding-bottom: 20px; width: 40px" do %>
     <%= image_tag "facebook.png", style: "width: 20px; height: 20px" %> Facebook
@@ -10,7 +10,7 @@
     <%= image_tag "tiktok.png", style: "width: 20px; height: 20px;" %> TikTok
   <% end %>
 
-  <p style="margin-top: 20px; font-size: 18px">También nos puedes escribir al:</p>
+  <p style="margin-top: 20px; font-size: 18px"><%= t(".thirdText") %></p>
   <%= link_to "https://wa.me/51934255287?text=Hola%20sobre%20el%20recojo", target: "_blank" , class: "link-whatsapp", rel: "noopener" do %>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48" fill="none">
     <path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="#25D366"/>
@@ -19,5 +19,5 @@
     +51 934 255 287
   <% end %>
 
-  <h3 style="margin-top: 30px; font-style: italic">¡No dudes en ponerte en contacto!</h3>
+  <h3 style="margin-top: 30px; font-style: italic"><%= t(".getInTouch") %></h3>
 </div>

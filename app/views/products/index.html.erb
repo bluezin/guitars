@@ -6,6 +6,19 @@
   <%= button_to t("common.logOut"), session_path, class: "button-secondary", style: "margin-top: 10px", method: :delete if authenticated? %>
 <% end %>
 
+<div class="product-search-engines">
+  <%= form_with url: products_path, method: :get, data: { turbo: false } do |form| %>
+    <%= form.text_field :query, placeholder: t(".searchForName"), class: "product-search-for-name" %>
+    <% if params[:query].present? %>
+      <%= link_to t(".allOptions"), products_path, style: "display: block; margin-top: 2px; text-decoration: underline; color: #2f3e46; font-size: 13px" %>
+    <% end %>
+  <% end %>
+
+  <div class="category-select-modern">
+    <%= select_tag :category, options_for_select([["Guitarra acustica", "guitar_acustic"], ["Guitarra test", "guitar_acustic2"]]) %>
+  </div>
+</div>
+
 <div class="list-products">
   <% @products.each do |product| %>
     <div class="list-products-item">

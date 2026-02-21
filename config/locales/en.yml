@@ -12,6 +12,18 @@ en:
     articles: "articles"
     total: "Total"
     addToCart: "Add to cart"
+  contacts:
+    index:
+      title: "Contact"
+      secondText: "You can find us on our social media channels:"
+      thirdText: "You can also write to us at:"
+      getInTouch: "¡Don't hesitate to get in touch!"
+  nav:
+    home: "Home"
+    whoWeAre: "About Us"
+    contact: "Contact"
+    spanish: "Spanish"
+    english: "English"
   footer:
     description: "Committed to giving you the best product."
     aboutUs: "About us"
@@ -58,5 +70,7 @@ en:
       price: "Price"
       availableQuantities: "Available quantities"
       addToCart: "Add to cart"
+      allOptions: "Show all options"
+      searchForName: "Search by product name"
     new:
       title: "Add new guitar"
