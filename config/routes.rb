@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     post "/izipay_callback", to: "payments#izipay_callback"
     #
     get "/historical-overview", to: "stories#index", as: :stories
+    get "/contact", to: "contacts#index", as: :contacts
   end
 
   scope "(:locale)", locale: /es|en/ do

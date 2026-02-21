@@ -1,36 +1,40 @@
-<nav>
+<nav class="navbar">
+  <div class="nav-left">
     <%= link_to products_path do %>
       <%= image_tag "logo.png", class: "logo" %>
     <% end %>
+  </div>
+
+  <ul class="nav-center">
+    <li><%= link_to "Inicio", root_path %></li>
+    <li><%= link_to "Quiénes Somos", stories_path %></li>
+    <li><%= link_to "Contacto", contacts_path %></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="language-toggle">
+      <%= button_to "Español", url_for(locale: :es), method: :get, class: "lang-btn #{'active' if I18n.locale == :es}" %>
+      <%= button_to "English", url_for(locale: :en), method: :get, class: "lang-btn #{'active' if I18n.locale == :en}" %>
+    </div>
 
     <% if @order&.status != 'approved' %>
-    <div class="container-articles">
-      <div class="shopping-cart" data-controller="modal" data-action="click->modal#open">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 1024 1024" class="icon" version="1.1" fill="#000000">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-          <g id="SVGRepo_iconCarrier">
-          <path d="M960.1 258.4H245.8l-36.1-169H63.9v44h110.2l26.7 125 100.3 469.9 530 0.4v-44l-494.4-0.3-22.6-105.9H832l128.1-320.1z m-65 44L855.6 401H276.3l-21.1-98.6h639.9zM304.8 534.5L279.7 417h569.5l-47 117.5H304.8z" fill="#cea11b"/>
-          <path d="M375.6 810.6c28.7 0 52 23.3 52 52s-23.3 52-52 52-52-23.3-52-52 23.3-52 52-52m0-20c-39.7 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.3-72-72-72zM732 810.6c28.7 0 52 23.3 52 52s-23.3 52-52 52-52-23.3-52-52 23.3-52 52-52m0-20c-39.7 0-72 32.2-72 72s32.2 72 72 72c39.7 0 72-32.2 72-72s-32.3-72-72-72zM447.5 302.4h16v232.1h-16zM652 302.4h16v232.1h-16z" fill="#cea11b"/>
-          <path d="M276.3 401l3.4 16-3.4-16z" fill="#343535"/>
-          </g>
+      <div class="cart-button" data-controller="modal" data-action="click->modal#open">
+        <svg class="cart-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="33"
+          height="33"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
-
-          <p><%= @order&.order_items&.size %> <%= t("common.articles") %></p>
-          | <span><%= t("common.total") %>: <%= @order&.total.to_i %> <%= t("common.currency") %></span> |
-
-          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9944 15.5C13.9274 15.5 15.4944 13.933 15.4944 12C15.4944 10.067 13.9274 8.5 11.9944 8.5C10.0614 8.5 8.49439 10.067 8.49439 12C8.49439 13.933 10.0614 15.5 11.9944 15.5ZM11.9944 13.4944C11.1691 13.4944 10.5 12.8253 10.5 12C10.5 11.1747 11.1691 10.5056 11.9944 10.5056C12.8197 10.5056 13.4888 11.1747 13.4888 12C13.4888 12.8253 12.8197 13.4944 11.9944 13.4944Z" fill="#0F0F0F"/>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5C7.18879 5 3.9167 7.60905 2.1893 9.47978C0.857392 10.9222 0.857393 13.0778 2.1893 14.5202C3.9167 16.391 7.18879 19 12 19C16.8112 19 20.0833 16.391 21.8107 14.5202C23.1426 13.0778 23.1426 10.9222 21.8107 9.47978C20.0833 7.60905 16.8112 5 12 5ZM3.65868 10.8366C5.18832 9.18002 7.9669 7 12 7C16.0331 7 18.8117 9.18002 20.3413 10.8366C20.9657 11.5128 20.9657 12.4872 20.3413 13.1634C18.8117 14.82 16.0331 17 12 17C7.9669 17 5.18832 14.82 3.65868 13.1634C3.03426 12.4872 3.03426 11.5128 3.65868 10.8366Z" fill="#0F0F0F"/>
-          </svg>
-          <%# <%= link_to t("common.login"), root_path %>
+        <span class="cart-count"><%= @order&.order_items&.size %></span>
       </div>
-
-      <% unless @order&.order_items&.empty? %>
-        <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get do %>
-          <button class="button-pay" type="submit"><%= t("common.pay") %></button>
-        <% end %>
-      <% end %>
 
       <div id="list-products" data-modal-target="modal" class="hidden cart-list-products">
           <svg data-controller="modal" data-action="click->modal#close" class="icon-close" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
@@ -61,7 +65,16 @@
             </div>
           </div>
           <% end %>
+
+          <% unless @order&.order_items&.empty? %>
+            <div style="display: flex; justify-content: center">
+              <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get do %>
+                <button class="button-pay" type="submit"><%= t("common.pay") %></button>
+              <% end %>
+            </div>
+          <% end %>
       </div>
-    </div>
     <% end %>
+  </div>
+  </div>
 </nav>

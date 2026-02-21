@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  allow_unauthenticated_access only: %i[add_product]
+  allow_unauthenticated_access only: %i[add_product checkout success]
 
   def add_product
     product = Product.find(params[:product_id])

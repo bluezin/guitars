@@ -6,11 +6,6 @@
   <%= button_to t("common.logOut"), session_path, class: "button-secondary", style: "margin-top: 10px", method: :delete if authenticated? %>
 <% end %>
 
-<div class="languages">
-  <%= button_to "Español", url_for(locale: :es), method: :get, class: I18n.locale == :es ? "active" : "" %>
-  <%= button_to "English", url_for(locale: :en), method: :get, class: I18n.locale == :en ? "active" : "" %>
-</div>
-
 <div class="list-products">
   <% @products.each do |product| %>
     <div class="list-products-item">
