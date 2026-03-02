@@ -2,14 +2,16 @@ class OrdersController < ApplicationController
   allow_unauthenticated_access only: %i[add_product checkout success]
 
   def add_product
+    convert_number =params["addToCart"].to_i
+    final_number = convert_number === 0 ? 1 : convert_number
     product = Product.find(params[:product_id])
-    product.inventory_count -= 1
+    product.inventory_count -= final_number
     product.save
 
     item = @order.order_items.find_or_initialize_by(product: product)
 
     item.quantity ||=0
-    item.quantity += 1
+    item.quantity += final_number
     item.price = product.price
     item.save
 

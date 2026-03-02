@@ -40,20 +40,20 @@
     <%= render "layouts/nav" %>
 
     <% if flash[:notice] %>
-      <div class="notice">
+      <div class="notice" id="notice-main" data-controller="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
 
-      <div class="alert">
-        <%= flash[:alert] %>
-      </div>
+    <div class="alert">
+      <%= flash[:alert] %>
+    </div>
 
-      <div class="container-general">
-        <%= yield %>
-      </div>
+    <main class="content">
+      <%= yield %>
+    </main>
 
-      <%= render "layouts/footer" %>
+    <%= render "layouts/footer" %>
 
     <script>
       document.addEventListener("turbo:load", () => {
@@ -120,6 +120,15 @@
           syncInputFiles();
         }
       });
+
+        const slides = document.querySelectorAll(".slide");
+        let index = 0;
+
+        setInterval(() => {
+          slides[index].classList.remove("active");
+          index = (index + 1) % slides.length;
+          slides[index].classList.add("active");
+        }, 5000); // cambia cada 5 segundos
     </script>
 
   </body>

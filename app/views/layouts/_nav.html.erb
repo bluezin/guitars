@@ -67,11 +67,9 @@
           <% end %>
 
           <% unless @order&.order_items&.empty? %>
-            <div style="display: flex; justify-content: center">
-              <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get do %>
-                <button class="button-pay" type="submit"><%= t("common.pay") %></button>
-              <% end %>
-            </div>
+            <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get, class: "form-of-button-pay" do %>
+              <button class="button-pay" type="submit"><%= t("common.pay") %></button>
+            <% end %>
           <% end %>
       </div>
     <% end %>

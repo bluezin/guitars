@@ -59,7 +59,7 @@ en:
     updatedAmount: "Updated amount"
   products:
     show:
-      seeMore: "See more images and/or videos"
+      seeMore: "View more images and/or videos of the product"
       description: "Description"
       price: "Price"
       availableQuantities: "Available quantities"

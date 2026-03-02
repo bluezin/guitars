@@ -59,7 +59,7 @@ es:
     updatedAmount: "Cantidad actualizada"
   products:
     show:
-      seeMore: "Ver más imagenes y/o videos"
+      seeMore: "Ver más imagenes y/o videos del producto"
       price: "Precio"
       availableQuantities: "Cantidades disponibles"
     index:

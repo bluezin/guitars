@@ -9,6 +9,8 @@ export default class extends Controller {
   open() {
     const el = document.getElementById("list-products")
     el.classList.remove("hidden");
+
+    document.getElementById("notice-main").style.display = "none"
   }
 
   close() {
