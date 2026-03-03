@@ -61,7 +61,13 @@ es:
     show:
       seeMore: "Ver más imagenes y/o videos del producto"
       price: "Precio"
-      availableQuantities: "Cantidades disponibles"
+      availableQuantities: ¡Quedan %{quantities} disponibles!
+      stock: "En stock"
+      exhausted: "Agotado"
+      description: "Descripción"
+      video: "Video/s del producto"
+      noVideos: "No hay videos"
+      onlyUnits: "*Solo hay %{inventoryCount} unidades disponibles."
     index:
       createGuitar: "Crea una nueva guitarra"
       exhausted: "Agotado"
@@ -70,5 +76,10 @@ es:
       availableQuantities: "Cantidades disponibles"
       allOptions: "Mostrar todas las opciones"
       searchForName: "Buscar por nombre del producto"
+      mainTitle:
+        first: "Encuentra"
+        second: "tu sonido"
+        third: "perfecto"
+      mainSecondaryText: "Guitarras acústicas y más, de alta calidad para cada músico."
     new:
       title: "Agregar nueva guitarra"

@@ -23,7 +23,7 @@ export default class extends Controller {
       this.button.disabled = true
       this.button.classList += "disable-btn"
 
-      document.getElementById("notice").textContent = `*Solo hay ${this.maxValue} unidades disponibles.`
+      document.getElementById("notice").style.display = "block"
     }
   }
 

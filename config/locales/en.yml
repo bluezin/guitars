@@ -60,9 +60,14 @@ en:
   products:
     show:
       seeMore: "View more images and/or videos of the product"
-      description: "Description"
       price: "Price"
-      availableQuantities: "Available quantities"
+      availableQuantities: "%{quantities} left!"
+      stock: "In stock"
+      exhausted: "Out of stock"
+      description: "Description"
+      video: "Product video(s)"
+      noVideos: "There are no videos"
+      onlyUnits: "*Only %{inventoryCount} units available."
     index:
       createGuitar: "Create a new guitar"
       exhausted: "Out of stock"
@@ -72,5 +77,10 @@ en:
       addToCart: "Add to cart"
       allOptions: "Show all options"
       searchForName: "Search by product name"
+      mainTitle:
+        first: "Finds"
+        second: "your perfect"
+        third: "sound"
+      mainSecondaryText: "High-quality acoustic guitars and more, for every musician."
     new:
       title: "Add new guitar"

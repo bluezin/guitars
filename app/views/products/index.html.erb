@@ -7,11 +7,11 @@
 
   <div class="hero-content">
     <h1 class="animated-title">
-      <span>Encuentra</span>
-      <span>tu sonido</span>
-      <span>perfecto</span>
+      <span><%= t(".mainTitle.first") %></span>
+      <span><%= t(".mainTitle.second") %></span>
+      <span><%= t(".mainTitle.third") %></span>
     </h1>
-    <p style="padding: 0px 16px">Guitarras acústicas y más, de alta calidad para cada músico.</p>
+    <p style="padding: 0px 16px"><%= t(".mainSecondaryText") %></p>
     <%= link_to "Explorar catálogo", root_path(anchor: "products"), class: "hero-btn" %>
   </div>
 </section>
