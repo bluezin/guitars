@@ -119,7 +119,7 @@ accessories:
     image: postgres:15
     host: 46.225.60.127
 #     # Change to 3306 to expose port to the world instead of just local network.
-    port: 5432
+    # port: 5432
     env:
       clear:
         POSTGRES_DB: guitars_production

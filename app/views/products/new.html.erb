@@ -1,7 +1,9 @@
-<div style="margin-top: 20px">
-  <%= link_to t("common.back"), products_path, class: "button-primary" %>
-</div>
+<section class="container-general">
+  <div style="margin-top: 20px">
+    <%= link_to t("common.back"), products_path, class: "button-primary" %>
+  </div>
 
-<h2><%= t(".title") %></h2>
+  <h2><%= t(".title") %></h2>
 
-<%= render "form", product: @product %>
+  <%= render "form", product: @product, categories: @categories %>
+</section>

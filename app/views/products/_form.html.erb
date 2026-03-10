@@ -36,6 +36,11 @@
     <%= form.number_field :price %>
   </div>
 
+  <div class="field">
+    <%= form.label :category_id, "Selecciona categoría" %>
+    <%= form.collection_select :category_id, categories, :id, :name, { prompt:"Elige una categoría" }, required: true, style: "padding: 10px; font-size: 18px" %>
+  </div>
+
   <div>
     <%= form.submit class: "button-primary" %>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_15_202818) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_27_012640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -52,6 +52,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_15_202818) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "order_id", null: false
@@ -72,11 +79,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_15_202818) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.integer "inventory_count", default: 0
     t.string "name"
     t.decimal "price"
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -108,6 +117,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_15_202818) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "products", "categories"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
 end

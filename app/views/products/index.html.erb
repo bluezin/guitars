@@ -25,51 +25,65 @@
     <%= button_to t("common.logOut"), session_path, class: "button-secondary", style: "margin-top: 10px", method: :delete if authenticated? %>
   <% end %>
 
-  <%= form_with url: products_path, method: :get, data: { turbo: false } do |form| %>
-    <%= form.text_field :query, value: params[:query], placeholder: t(".searchForName"), class: "product-search-for-name" %>
-      <% if params[:query].present? %>
-        <%= link_to t(".allOptions"), products_path, style: "display: block; margin-top: 2px; text-decoration: underline; color: #2f3e46; font-size: 13px" %>
-    <% end %>
-  <% end %>
-
-  <div class="list-products">
-    <% @products.each do |product| %>
-      <div class="list-products-item">
-        <p class="list-products-item-title">
-          <%= product.name %>
-        </p>
-
-        <br />
-
-      <%= image_tag product.featured_image, class: "list-products-item-img", style: "width: 100%; cursor: pointer; height: 200px; box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.12);" if product.featured_image.attached? %>
-
-      <% if product.inventory_count > 0 %>
-        <div class="container-buttons-cart">
-          <%= button_to t("common.addToCart"), add_product_order_path(@order, product_id: product.id), method: :post, class: "button-add-cart" %>
-        </div>
-      <% else %>
-        <p class="exhausted"><%= t(".exhausted") %></p>
-      <% end%>
-
-      <div class="list-products-item-data">
-        <strong><%= t(".description") %>:</strong>
-        <span class="list-products-item-description">
-          <%= truncate(product.description.to_plain_text, length: 70) %>
-        </span>
-        <br />
-        <br />
-        <strong><%= t(".price") %>:</strong>
-        <span><%= product.price.to_i %> <%= t("common.currency") %></span>
-        <br />
-        <br />
-        <strong><%= t(".availableQuantities") %>:</strong>
-        <span><%= product.inventory_count %></span>
-      </div>
-
-        <%= link_to product_path(product), class: "link-show-more" do %>
-          <span><%= t("common.moreInformation") %></span>
-        <% end %>
-      </div>
-    <% end %>
+<section class="container-products">
+  <div class="section-categories">
+    <p class="section-categories-title">Categorías</p>
+    <p class="section-categories-divider"></p>
+    <div class="section-categories-container-links">
+      <% Category.all.map do |item| %>
+        <%= link_to item.name, products_path(category_id: item.id), class: "section-categories-link #{"section-categories-link-active" if params[:category_id].to_i == item.id}" %>
+      <% end %>
+    </div>
   </div>
+
+  <section class="products-index-second-content">
+    <%= form_with url: products_path, method: :get, data: { turbo: false } do |form| %>
+      <%= form.text_field :query, value: params[:query], placeholder: t(".searchForName"), class: "product-search-for-name" %>
+        <% if params[:query].present? %>
+          <%= link_to t(".allOptions"), products_path, style: "display: block; margin-top: 2px; text-decoration: underline; color: #2f3e46; font-size: 13px" %>
+      <% end %>
+    <% end %>
+
+    <div class="list-products">
+      <% @products.each do |product| %>
+        <div class="list-products-item">
+          <p class="list-products-item-title">
+            <%= product.name %>
+          </p>
+
+          <br />
+
+        <%= image_tag product.featured_image, class: "list-products-item-img", style: "width: 100%; cursor: pointer; height: 200px; box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.12);" if product.featured_image.attached? %>
+
+        <% if product.inventory_count > 0 %>
+          <div class="container-buttons-cart">
+            <%= button_to t("common.addToCart"), add_product_order_path(@order, product_id: product.id), method: :post, class: "button-add-cart" %>
+          </div>
+        <% else %>
+          <p class="exhausted"><%= t(".exhausted") %></p>
+        <% end%>
+
+        <div class="list-products-item-data">
+          <strong><%= t(".description") %>:</strong>
+          <span class="list-products-item-description">
+            <%= truncate(product.description.to_plain_text, length: 70) %>
+          </span>
+          <br />
+          <br />
+          <strong><%= t(".price") %>:</strong>
+          <span><%= product.price.to_i %> <%= t("common.currency") %></span>
+          <br />
+          <br />
+          <strong><%= t(".availableQuantities") %>:</strong>
+          <span><%= product.inventory_count %></span>
+        </div>
+
+          <%= link_to product_path(product), class: "link-show-more" do %>
+            <span><%= t("common.moreInformation") %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</section>
 </div>

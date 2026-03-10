@@ -3,10 +3,14 @@ class ProductsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
 
   def index
-    @products = if params[:query].present?
-      Product.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      Product.all
+    @products = Product.all
+
+    if params[:query].present?
+      @products = @products.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:category_id].present?
+      @products = @products.where(category_id: params[:category_id])
     end
   end
 
@@ -15,6 +19,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   def create
@@ -45,7 +50,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price, media: [] ])
+    params.expect(product: [ :name, :description, :featured_image, :inventory_count, :price, :category_id, media: [] ])
   end
 
   def set_product
