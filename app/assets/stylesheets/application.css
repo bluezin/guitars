@@ -886,6 +886,12 @@ p {
   gap: 60px;
 }
 
+.resultsFound-text {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
 @media screen and (max-width: 1300px) {
   .list-products {
     grid-template-columns: auto auto;

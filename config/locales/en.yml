@@ -1,5 +1,6 @@
 en:
   common:
+    resultsFound: "We found no results for your search."
     cancel: "Cancel"
     edit: "Edit"
     delete: "Delete"

@@ -1,5 +1,6 @@
 es:
   common:
+    resultsFound: "No encontramos resultados para tu búsqueda."
     cancel: "Cancelar"
     edit: "Editar"
     delete: "Eliminar"
@@ -82,4 +83,4 @@ es:
         third: "perfecto"
       mainSecondaryText: "Guitarras acústicas y más, de alta calidad para cada músico."
     new:
-      title: "Agregar nueva guitarra"
+      title: "Agregar nuevo producto"

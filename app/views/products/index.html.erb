@@ -39,8 +39,12 @@
   <section class="products-index-second-content">
     <%= form_with url: products_path, method: :get, data: { turbo: false } do |form| %>
       <%= form.text_field :query, value: params[:query], placeholder: t(".searchForName"), class: "product-search-for-name" %>
-        <% if params[:query].present? %>
-          <%= link_to t(".allOptions"), products_path, style: "display: block; margin-top: 2px; text-decoration: underline; color: #2f3e46; font-size: 13px" %>
+      <% if params[:query].present? %>
+        <%= link_to t(".allOptions"), products_path, style: "display: block; margin-top: 2px; text-decoration: underline; color: #2f3e46; font-size: 13px" %>
+      <% end %>
+
+      <% unless @resultsFound %>
+        <p class="resultsFound-text"><%= t("common.resultsFound") %></p>
       <% end %>
     <% end %>
 
