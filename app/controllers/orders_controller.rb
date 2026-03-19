@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   allow_unauthenticated_access only: %i[add_product checkout success]
+  protect_from_forgery width: :null_session, only: :success
 
   def add_product
     convert_number =params["addToCart"].to_i
@@ -39,10 +40,11 @@ class OrdersController < ApplicationController
   end
 
   def success
-    answer = JSON.parse(params["kr-answer"])
-    order_id = answer.dig("orderDetails", "orderId")
-    @order = Order.find_by(id: order_id)
+    @order = Order.find(params[:order_id])
 
-    render :success
+    if request.post?
+      redirect_to order_success_path(@order)
+    else
+    end
   end
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       # izipay
       get :checkout
       get :success
+      post :success
     end
 
     get "/cart", to: "orders#show", as: :cart
