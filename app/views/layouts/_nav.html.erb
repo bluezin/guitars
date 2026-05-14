@@ -6,9 +6,9 @@
   </div>
 
   <ul class="nav-center">
-    <li><%= link_to t("nav.home"), root_path %></li>
-    <li><%= link_to t("nav.whoWeAre"), stories_path %></li>
-    <li><%= link_to t("nav.contact"), contacts_path %></li>
+    <li><%= link_to t("nav.home"), root_path, class: current_page?(root_path) ? "ancla-active" : "" %></li>
+    <li><%= link_to t("nav.whoWeAre"), stories_path, class: current_page?(stories_path) ? "ancla-active" : ""  %></li>
+    <li><%= link_to t("nav.contact"), contacts_path, class: current_page?(contacts_path) ? "ancla-active" : ""  %></li>
   </ul>
 
   <div class="nav-right">

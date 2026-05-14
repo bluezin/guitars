@@ -15,10 +15,15 @@ en:
     addToCart: "Add to cart"
   contacts:
     index:
-      title: "Contact"
-      secondText: "You can find us on our social media channels:"
-      thirdText: "You can also write to us at:"
-      getInTouch: "¡Don't hesitate to get in touch!"
+      title: "We’re Here to Help You"
+      subTitle: "CONTACT US"
+      secondText: "You can find us on our social media channels or contact us directly."
+      followFacebook: "Follow us on Facebook"
+      sendEmail: "Send us an email"
+      followTikTok: "Follow us on TikTok"
+      question: "Do you have any questions?"
+      help: "We’ll be happy to help you with anything you need."
+      writeNow: "Write to us now"
   nav:
     home: "Home"
     whoWeAre: "About Us"

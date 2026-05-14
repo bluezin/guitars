@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Mtdavid">
+    <meta name="description" content="Tienda de guitarras e instrumentos musicales. Encuentra guitarras, accesorios y más en Mtdavid.">
+    <meta name="keywords" content="guitarras, instrumentos musicales, tienda de guitarras, bajos, accesorios musicales">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="Mtdavid">
+    <meta property="og:description" content="Tienda de guitarras e instrumentos musicales">
+    <meta property="og:image" content="<%= image_url('/icon.jpg') %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -33,7 +40,6 @@
       rel="stylesheet"
       href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
     <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
-    </head>
   </head>
 
   <body>

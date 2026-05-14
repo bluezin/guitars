@@ -1,0 +1,174 @@
+.contact-divider {
+  width: 250px;
+  height: 1px;
+  background-color: rgb(190, 193, 196);
+  margin: 20px auto;
+}
+
+.contact-container {
+  text-align: center;
+  padding-top: 50px;
+  width: 1000px;
+  margin: auto;
+}
+
+.contact-sub-title {
+  color: var(--color-secondary-text);
+  font-size: 12px;
+  letter-spacing: 0.9px;
+  font-weight: 500;
+}
+
+.contact-title {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.contact-second-text {
+  color: gray;
+  width: 450px;
+  margin: auto;
+}
+
+.card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
+  height: 190px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-follow-us {
+  display: block;
+  padding: 10px 0px;
+  font-size: 13px;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.7px;
+}
+
+.link-go {
+  border-radius: 100px;
+  border: 1px solid gray;
+  padding: 8px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin: 10px auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.email {
+  color: var(--color-secondary-text);
+  font-weight: 500;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.write {
+  display: flex;
+  border: 1px solid #C96E28;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin: 30px auto 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.write-sub-container {
+  text-align: left;
+}
+
+.write-sub-container-question {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.btn-whatsapp {
+  background: #C96E28;
+  padding: 12px 20px;
+  display: flex;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1090px) {
+  .contact-container {
+    width: 90%;
+    padding: 40px 16px auto;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .card {
+    padding: 10px 20px;
+  }
+
+  .container-cards {
+    flex-wrap: wrap;
+  }
+
+  .write {
+    gap: 30px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .write-sub-container {
+    text-align: center;
+  }
+
+  .btn-whatsapp {
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .contact-second-text {
+    width: 100%;
+  }
+
+  .divider {
+    width: 90%;
+  }
+
+  .contact-title {
+    font-size: 24px;
+  }
+
+  .write {
+    padding: 20px 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    width: 90%;
+  }
+}
