@@ -1,4 +1,8 @@
 es:
+  app:
+    title: "Mtdavid | Tienda de Instrumentos musicales"
+    description: "Tienda de guitarras e instrumentos musicales."
+    keywords: "guitarras, instrumentos musicales, tienda de guitarras, bajos, accesorios musicales"
   common:
     resultsFound: "No encontramos resultados para tu búsqueda."
     cancel: "Cancelar"

@@ -1,4 +1,8 @@
 en:
+  app:
+    title: "Mtdavid | Musical Instruments Store"
+    description: "Guitar and musical instruments store."
+    keywords: "guitars, musical instruments, guitar store, bass guitars, musical accessories"
   common:
     resultsFound: "We found no results for your search."
     cancel: "Cancel"

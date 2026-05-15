@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title><%= content_for(:title) || "Mtdavid" %></title>
+    <title><%= content_for(:title) || t("app.title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Mtdavid">
-    <meta name="description" content="Tienda de guitarras e instrumentos musicales. Encuentra guitarras, accesorios y más en Mtdavid.">
-    <meta name="keywords" content="guitarras, instrumentos musicales, tienda de guitarras, bajos, accesorios musicales">
+    <meta name="description" content="<%= content_for(:description) || t("app.description") %>">
+    <meta name="keywords" content="<%= t("app.keywords") %>">
     <meta name="mobile-web-app-capable" content="yes">
     <meta property="og:title" content="Mtdavid">
-    <meta property="og:description" content="Tienda de guitarras e instrumentos musicales">
-    <meta property="og:image" content="<%= image_url('/icon.jpg') %>">
+    <meta property="og:description" content="<%= t("app.description") %>">
+    <meta property="og:image" content="<%= image_url('/icon.png') %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
+    <link rel="canonical" href="<%= request.base_url + request.path %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,25 +22,26 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.jpg" type="image/jpg">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.jpg">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <script
-      type="text/javascript"
-      src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
-      kr-public-key="<%= ENV["IZIPAY_PUBLIC_KEY"] %>"
-      kr-post-url-success="<%= order_success_path(@order) %>"
-      kr-language="es">
-    </script>
-    <link
-      rel="stylesheet"
-      href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
-    <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
+    <% if controller_name == "orders" %>
+      <script
+        type="text/javascript"
+        src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
+        kr-public-key="<%= ENV["IZIPAY_PUBLIC_KEY"] %>"
+        kr-post-url-success="<%= order_success_path(@order) %>"
+        kr-language="es">
+      </script>
+      <link
+        rel="stylesheet"
+        href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
+      <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
+    <% end %>
   </head>
 
   <body>
@@ -136,6 +138,5 @@
           slides[index].classList.add("active");
         }, 5000); // cambia cada 5 segundos
     </script>
-
   </body>
 </html>
