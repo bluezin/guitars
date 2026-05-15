@@ -28,6 +28,9 @@ en:
       question: "Do you have any questions?"
       help: "We’ll be happy to help you with anything you need."
       writeNow: "Write to us now"
+  stories:
+    index:
+      title: "Get to Know Us a Little Better!"
   nav:
     home: "Home"
     whoWeAre: "About Us"

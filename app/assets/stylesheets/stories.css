@@ -1,0 +1,129 @@
+.about-container {
+  width: 1100px;
+  margin: auto;
+  padding: 60px 0 80px;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #9f9f9f;
+  font-weight: 600;
+}
+
+.about-title {
+  font-size: 52px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  margin: 14px 0;
+  color: #111;
+}
+
+.about-description {
+  width: 720px;
+  margin: auto;
+  color: #666;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.about-timeline {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-card {
+  text-align: left;
+  padding: 35px;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about-year {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #C96E28;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.about-card-title {
+  font-size: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.about-card-text {
+  color: #666;
+  line-height: 1.9;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.about-models {
+  display: flex;
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.about-model {
+  flex: 1;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+}
+
+.about-model strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.about-model p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1150px) {
+  .about-container {
+    width: 90%;
+  }
+
+  .about-description {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-title {
+    font-size: 30px;
+  }
+
+  .about-card {
+    padding: 25px;
+  }
+
+  .about-card-title {
+    font-size: 22px;
+  }
+
+  .about-models {
+    flex-direction: column;
+  }
+
+  .about-container {
+    padding: 20px 0px 80px;
+  }
+
+  .about-timeline {
+    margin-top: 40px;
+  }
+}

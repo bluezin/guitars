@@ -28,6 +28,9 @@ es:
       question: "¿Tienes alguna consulta?"
       help: "Estaremos encantados de ayudarte con lo que necesites."
       writeNow: "Escríbenos ahora"
+  stories:
+    index:
+      title: "¡Conócenos un poco más!"
   nav:
     home: "Inicio"
     whoWeAre: "Quiénes Somos"
