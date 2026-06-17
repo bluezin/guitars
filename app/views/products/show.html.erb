@@ -3,7 +3,7 @@
     <%= link_to t("common.back"), products_path, class: "button-primary" %>
   </div>
 
-  <section class="products-show-sub-container" style="width: 80%; margin: auto">
+  <section class="products-show-sub-container" style="width: 100%; margin: auto">
     <div class="container-main" data-controller="image-gallery">
       <div data-controller="slider">
         <div data-controller="zoom" class="zoom-wrapper">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="products-show-content">
       <h1 style="margin: 0"><%= @product.name.upcase %></h1>
 
       <strong style="margin-top: 20px; display: block" class="products-show-price">S/ <%= @product.price.to_i %> <%= t("common.currency") %></strong>
@@ -83,7 +83,7 @@
         <%= @product.description %>
       </h3>
 
-      <div class="videos" style="box-sizing: border-box; background: white; padding: 20px; border-radius: 10px; margin-top: 25px; width: 500px">
+      <div class="videos" style="box-sizing: border-box; background: white; padding: 20px; border-radius: 10px; margin-top: 25px">
         <p style="font-weight: 700; font-size: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px">
           <%= image_tag "video.webp", style: "width: 30px; height: 30px" %>
           <%= t(".video") %>

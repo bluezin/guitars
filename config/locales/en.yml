@@ -54,6 +54,8 @@ en:
     linkInvalidOrExpired: "Password reset link is invalid or has expired."
   orders:
     addedProduct: "Product added to cart"
+    units: "units"
+    cartTitle: "Shopping cart"
     checkout:
       pay: "Pay"
       note: "Important note:"

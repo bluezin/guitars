@@ -129,6 +129,10 @@
   right: -50px;
 }
 
+.products-show-content {
+  width: 550px
+}
+
 @media screen and (max-width: 1060px) {
   .videos {
     width: 350px !important;
@@ -141,13 +145,15 @@
     height: 500px;
     margin: auto;
   }
-}
 
-@media screen and (max-width: 811px) {
   .products-show-sub-container {
     width: 90% !important;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .products-show-content {
+    width: 100%
   }
 }
 

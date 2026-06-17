@@ -54,6 +54,8 @@ es:
     linkInvalidOrExpired: "El enlace de restablecimiento de contraseña no es válido o ha expirado."
   orders:
     addedProduct: "Producto agregado al carrito"
+    units: "unidades"
+    cartTitle: "Carrito de compras"
     checkout:
       pay: "Pagar"
       note: "Nota importante:"

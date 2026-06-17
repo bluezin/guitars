@@ -1,20 +1,26 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["modal"];
-
-  connect() {}
-
   open() {
-    const el = document.getElementById("list-products")
-    el.classList.remove("hidden");
+    const panel = document.getElementById("list-products")
+    const backdrop = document.getElementById("cart-backdrop")
 
-    document.getElementById("notice-main").style.display = "none"
+    if (panel) panel.classList.remove("hidden")
+    if (backdrop) backdrop.classList.remove("hidden")
+
+    const notice = document.getElementById("notice-main")
+    if (notice) notice.style.display = "none"
+
+    document.body.style.overflow = "hidden"
   }
 
   close() {
-    const el = document.getElementById("list-products")
-    el.classList.add("hidden")
+    const panel = document.getElementById("list-products")
+    const backdrop = document.getElementById("cart-backdrop")
+
+    if (panel) panel.classList.add("hidden")
+    if (backdrop) backdrop.classList.add("hidden")
+
+    document.body.style.overflow = ""
   }
 }

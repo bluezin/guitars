@@ -57,7 +57,9 @@
 
           <br />
 
-        <%= image_tag product.featured_image, class: "list-products-item-img", style: "width: 100%; cursor: pointer; height: 200px; box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.12);" if product.featured_image.attached? %>
+        <%= link_to product_path(product) do %>
+          <%= image_tag product.featured_image, class: "list-products-item-img", style: "width: 100%; cursor: pointer; height: 200px; box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.12);" if product.featured_image.attached? %>
+        <% end %>
 
         <% if product.inventory_count > 0 %>
           <div class="container-buttons-cart">

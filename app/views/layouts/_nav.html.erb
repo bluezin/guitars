@@ -18,7 +18,8 @@
     </div>
 
     <% if @order&.status != 'approved' %>
-      <div class="cart-button" data-controller="modal" data-action="click->modal#open">
+      <div data-controller="modal">
+      <div class="cart-button" data-action="click->modal#open">
         <svg class="cart-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="33"
@@ -36,17 +37,23 @@
         <span class="cart-count"><%= @order&.order_items&.size %></span>
       </div>
 
-      <div id="list-products" data-modal-target="modal" class="hidden cart-list-products">
-          <svg data-controller="modal" data-action="click->modal#close" class="icon-close" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
+      <div id="cart-backdrop" class="hidden cart-backdrop" data-action="click->modal#close"></div>
+      <div id="list-products" class="hidden cart-list-products" data-controller="modal">
+        <div class="cart-header">
+          <span class="cart-header-title"><%= t("orders.cartTitle") %></span>
+          <svg data-action="click->modal#close" class="icon-close" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="1.5"/>
             <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
+        </div>
 
           <% @order&.order_items&.each do |item| %>
             <div class="cart-item">
-              <p class="cart-item-name"><%= item.product.name.capitalize %></p>
-              <div class="cart-item-div">
-              <p><%= item.quantity %> unidades</p>
+              <div class="cart-item-info">
+                <p class="cart-item-name"><%= item.product.name.capitalize %></p>
+                <p class="cart-item-quantity"><%= item.quantity %> <%= t("orders.units") %> x S/ <%= item.price.to_i %></p>
+              </div>
+              <span class="cart-item-price">S/ <%= (item.quantity * item.price).to_i %></span>
 
             <%= button_to order_item_path(item), class: "cart-item-remove", method: :delete do %>
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
@@ -62,7 +69,6 @@
               </g>
               </svg>
               <% end %>
-            </div>
           </div>
           <% end %>
 
@@ -72,6 +78,7 @@
             <% end %>
           <% end %>
       </div>
+    </div>
     <% end %>
   </div>
   </div>
