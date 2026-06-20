@@ -128,54 +128,79 @@
   box-shadow: 0 0 0 2px rgba(212, 128, 40, 0.25);
 }
 
+.products-show-header-mobile {
+  display: none;
+}
+
 .products-show-content {
   width: 550px
 }
 
-@media screen and (max-width: 1060px) {
-  .videos {
-    width: 350px !important;
-  }
-}
-
 @media screen and (max-width: 890px) {
-  .container-main {
-    width: 90%;
-    margin: auto;
+  .products-show-header-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 0 8px;
   }
 
-  .zoom-wrapper {
-    height: 420px;
+  .products-show-header-mobile-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .products-show-header-mobile-top h1 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+  }
+
+  .products-show-header-mobile .products-show-price {
+    font-size: 20px;
+    color: #141313;
+    font-weight: 600;
+  }
+
+  .products-show-header-desktop {
+    display: none;
   }
 
   .products-show-sub-container {
-    width: 90% !important;
     flex-direction: column;
-    justify-content: center;
+    gap: 16px;
+  }
+
+  .container-main {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .zoom-wrapper {
+    height: 400px;
   }
 
   .products-show-content {
-    width: 100%
+    width: 100%;
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 530px) {
   .container-main {
-    width: 100%;
-    border-radius: 12px;
+    border-radius: 14px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
   }
 
   .zoom-wrapper {
-    height: 320px;
-  }
-
-  .products-show-sub-container {
-    width: 100% !important;
+    height: 340px;
   }
 
   .thumbnail {
     width: 64px;
     height: 64px;
+    border-radius: 8px;
   }
 
   .thumbnail-strip {
@@ -185,6 +210,10 @@
 }
 
 @media screen and (max-width: 420px) {
+  .container-main {
+    border-radius: 12px;
+  }
+
   .zoom-wrapper {
     height: 280px;
   }
@@ -192,6 +221,7 @@
   .thumbnail {
     width: 56px;
     height: 56px;
+    border-radius: 6px;
   }
 
   .thumbnail-strip {

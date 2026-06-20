@@ -4,6 +4,18 @@
   </div>
 
   <section class="products-show-sub-container">
+    <div class="products-show-header-mobile">
+      <div class="products-show-header-mobile-top">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary-bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <h1><%= @product.name.upcase %></h1>
+        <strong class="products-show-price">(S/ <%= format_price(@product.price) %>)</strong>
+      </div>
+    </div>
+
     <div class="container-main" data-controller="image-gallery">
       <div class="zoom-wrapper" data-controller="zoom">
         <% if @product.featured_image.attached? %>
@@ -36,9 +48,10 @@
     </div>
 
     <div class="products-show-content">
-      <h1 style="margin: 0"><%= @product.name.upcase %></h1>
-
-      <strong style="margin-top: 20px; display: block" class="products-show-price">S/ <%= format_price(@product.price) %> <%= t("common.currency") %></strong>
+      <div class="products-show-header-desktop">
+        <h1 style="margin: 0"><%= @product.name.upcase %></h1>
+        <strong style="margin-top: 20px; display: block" class="products-show-price">S/ <%= format_price(@product.price) %> <%= t("common.currency") %></strong>
+      </div>
 
       <% if @product.inventory_count > 0 %>
         <p style="margin: 20px 0px 0px; font-size: 16px; font-style: italic">🔥 <%= t(".availableQuantities", quantities: @product.inventory_count) %></p>
