@@ -11,8 +11,15 @@
           <path d="M2 17l10 5 10-5"/>
           <path d="M2 12l10 5 10-5"/>
         </svg>
-        <h1><%= @product.name.upcase %></h1>
-        <strong class="products-show-price">(S/ <%= format_price(@product.price) %>)</strong>
+        <% if @product.name.length > 10 %>
+          <div>
+            <h1><%= @product.name.upcase %></h1>
+            <strong class="products-show-price">S/ <%= format_price(@product.price) %></strong>
+          </div>
+        <% else %>
+          <h1><%= @product.name.upcase %></h1>
+          <strong class="products-show-price">S/ <%= format_price(@product.price) %></strong>
+        <% end %>
       </div>
     </div>
 
