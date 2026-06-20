@@ -3,42 +3,42 @@
     <%= link_to t("common.back"), products_path, class: "button-primary" %>
   </div>
 
-  <section class="products-show-sub-container" style="width: 100%; margin: auto">
+  <section class="products-show-sub-container">
     <div class="container-main" data-controller="image-gallery">
-      <div data-controller="slider">
-        <div data-controller="zoom" class="zoom-wrapper">
-          <% if @product.featured_image.attached? %>
-            <%= image_tag @product.featured_image, data: { zoom_target: "image", action: "mousemove->zoom#move mouseleave->zoom#reset", image_gallery_target: "main" }, class: "products-show-main-image", style: "" %>
-          <% end %>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px">
-          <% if @product.media.length > 3 %>
-            <button data-action="click->slider#prev" class="arrow left">
-              <%= image_tag "back.webp", style: "width: 30px; height: 30px" %>
-            </button>
-          <% end %>
-
-          <% @product.media.each do |media| %>
-            <% if media.image? %>
-              <%= image_tag media, class: "thumbnail", data: { action: "click->image-gallery#change", image_gallery_target: "thumbnail", slider_target: "item", url: url_for(media), class: "slider-item" } %>
-            <% end %>
-          <% end %>
-
-          <% if @product.media.length > 3 %>
-            <button data-action="click->slider#next" class="arrow right">
-              <%= image_tag "forward.webp", style: "width: 30px; height: 30px" %>
-            </button>
-          <% end %>
-        </div>
+      <div class="zoom-wrapper" data-controller="zoom">
+        <% if @product.featured_image.attached? %>
+          <%= image_tag @product.featured_image,
+                data: { zoom_target: "image",
+                        action: "mousemove->zoom#move mouseleave->zoom#reset",
+                        image_gallery_target: "main" },
+                class: "products-show-main-image" %>
+        <% end %>
       </div>
+
+      <div class="thumbnail-strip">
+        <% if @product.featured_image.attached? %>
+          <%= image_tag @product.featured_image,
+                class: "thumbnail active",
+                data: { action: "click->image-gallery#change",
+                        image_gallery_target: "thumbnail",
+                        url: url_for(@product.featured_image) } %>
+        <% end %>
+        <% @product.media.each do |media| %>
+          <% if media.image? %>
+            <%= image_tag media,
+                  class: "thumbnail",
+                  data: { action: "click->image-gallery#change",
+                          image_gallery_target: "thumbnail",
+                          url: url_for(media) } %>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
     <div class="products-show-content">
       <h1 style="margin: 0"><%= @product.name.upcase %></h1>
 
-      <strong style="margin-top: 20px; display: block" class="products-show-price">S/ <%= @product.price.to_i %> <%= t("common.currency") %></strong>
+      <strong style="margin-top: 20px; display: block" class="products-show-price">S/ <%= format_price(@product.price) %> <%= t("common.currency") %></strong>
 
       <% if @product.inventory_count > 0 %>
         <p style="margin: 20px 0px 0px; font-size: 16px; font-style: italic">🔥 <%= t(".availableQuantities", quantities: @product.inventory_count) %></p>

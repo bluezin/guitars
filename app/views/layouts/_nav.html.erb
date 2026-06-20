@@ -51,9 +51,9 @@
             <div class="cart-item">
               <div class="cart-item-info">
                 <p class="cart-item-name"><%= item.product.name.capitalize %></p>
-                <p class="cart-item-quantity"><%= item.quantity %> <%= t("orders.units") %> x S/ <%= item.price.to_i %></p>
+                <p class="cart-item-quantity"><%= item.quantity %> <%= t("orders.units") %> x S/ <%= format_price(item.price) %></p>
               </div>
-              <span class="cart-item-price">S/ <%= (item.quantity * item.price).to_i %></span>
+              <span class="cart-item-price">S/ <%= format_price(item.quantity * item.price) %></span>
 
             <%= button_to order_item_path(item), class: "cart-item-remove", method: :delete do %>
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
@@ -73,7 +73,7 @@
           <% end %>
 
           <% unless @order&.order_items&.empty? %>
-            <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get, class: "form-of-button-pay" do %>
+            <%= form_with url: order_checkout_path(@order), data: { turbo: false }, method: :get, class: "form-of-button-pay", html: { onsubmit: "this.querySelector('.button-pay').disabled = true; this.querySelector('.button-pay').textContent = 'Cargando...'" } do %>
               <button class="button-pay" type="submit"><%= t("common.pay") %></button>
             <% end %>
           <% end %>

@@ -12,7 +12,7 @@
   <% end %>
 </ul>
 
-<p class="success-order-label"><strong>Total:</strong> S/. <%= @order.total %></p>
+<p class="success-order-label"><strong>Total:</strong> S/. <%= format_price(@order.total) %></p>
 <br />
 <p class="success-order-label">Para el recojo de tu pedido, puedes contactarte con</p>
   <%= link_to "https://wa.me/51934255287?text=Hola%20sobre%20el%20recojo", target: "_blank" , class: "link-whatsapp", rel: "noopener" do %>

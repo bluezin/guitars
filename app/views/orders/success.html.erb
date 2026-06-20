@@ -13,7 +13,7 @@
     <% end %>
   </ul>
 
-  <p class="success-order-label"><strong><%= t(".total") %></strong> S/. <%= @order.total %></p>
+  <p class="success-order-label"><strong><%= t(".total") %></strong> S/. <%= format_price(@order.total) %></p>
   <br />
   <p class="success-order-label"><%= t(".pickUp") %></p>
     <%= link_to "https://wa.me/51934255287?text=Hola%20sobre%20el%20recojo", target: "_blank" , class: "link-whatsapp", rel: "noopener" do %>
