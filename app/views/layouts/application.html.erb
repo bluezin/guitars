@@ -8,12 +8,35 @@
     <meta name="description" content="<%= content_for(:description) || t("app.description") %>">
     <meta name="keywords" content="<%= t("app.keywords") %>">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta property="og:title" content="Mtdavid">
-    <meta property="og:description" content="<%= t("app.description") %>">
+    <meta property="og:title" content="<%= content_for(:title) || t("app.title") %>">
+    <meta property="og:description" content="<%= content_for(:description) || t("app.description") %>">
     <meta property="og:image" content="<%= image_url('/icon.png') %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
-    <link rel="canonical" href="https://mtdavid.com.pe">
+    <link rel="canonical" href="<%= request.original_url %>">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "MtDavid Guitars",
+      "url": "https://mtdavid.com.pe",
+      "description": "<%= t("app.description") %>",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PE"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@mtdavid.com.pe",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/Mtdavidguitars",
+        "https://www.tiktok.com/@mtdavid_guitars"
+      ]
+    }
+    </script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

@@ -1,3 +1,22 @@
+<% content_for(:title, "#{@product.name} | Mtdavid Guitars") %>
+<% content_for(:description, strip_tags(@product.description.to_plain_text.truncate(160))) %>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "<%= @product.name %>",
+  "description": "<%= strip_tags(@product.description.to_plain_text.truncate(200)) %>",
+  "offers": {
+    "@type": "Offer",
+    "price": "<%= @product.price %>",
+    "priceCurrency": "PEN",
+    "availability": "<%= @product.inventory_count > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' %>"
+  },
+  "image": "<%= url_for(@product.featured_image) if @product.featured_image.attached? %>"
+}
+</script>
+
 <section class="container-general">
   <div style="margin-top: 20px; margin-bottom: 30px">
     <%= link_to t("common.back"), products_path, class: "button-primary" %>
