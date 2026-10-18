@@ -1,0 +1,77 @@
+<%
+  # Sample offers until product discounts exist in the backend.
+  deals = [
+    { name: "Guitarra acústica cedro", old_price: 1200, new_price: 960, discount: 20, icon: "🎸" },
+    { name: "Go Acustic preamplificador", old_price: 250, new_price: 212, discount: 15, icon: "🎛️" },
+    { name: "Sistema Presonic", old_price: 320, new_price: 256, discount: 20, icon: "🔊" },
+    { name: "Cuerdas D'Addario", old_price: 60, new_price: 54, discount: 10, icon: "🎵" }
+  ]
+  ends_at = Time.current.end_of_day
+  remaining_seconds = (ends_at - Time.current).to_i.clamp(0, 86_400)
+  hours = remaining_seconds / 3600
+  minutes = (remaining_seconds % 3600) / 60
+  seconds = remaining_seconds % 60
+%>
+
+<section class="cyber-hero" aria-labelledby="cyber-hero-title">
+  <div class="cyber-hero__content">
+    <p class="cyber-hero__pill">⚡ FULL DAY · SOLO HOY</p>
+    <h1 id="cyber-hero-title" class="cyber-hero__title">CYBER WOW</h1>
+    <p class="cyber-hero__subtitle">
+      Ofertas que suenan increíble<br>
+      en productos seleccionados
+    </p>
+    <p class="cyber-hero__offer">hasta <strong>20% OFF</strong></p>
+    <p class="cyber-hero__note">*Válido hoy hasta las 11:59 p. m. o hasta agotar stock.</p>
+    <%= link_to "Ver ofertas →", root_path(anchor: "products"), class: "cyber-hero__cta" %>
+
+    <div
+      class="cyber-hero__countdown"
+      role="timer"
+      data-controller="countdown"
+      data-countdown-ends-at-value="<%= ends_at.iso8601 %>"
+    >
+      <span class="cyber-sr-only">Tiempo restante de la oferta</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="hours"><%= format("%02d", hours) %></span>
+        <span class="cyber-hero__unit-label">horas</span>
+      </div>
+      <span class="cyber-hero__sep" aria-hidden="true">:</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="minutes"><%= format("%02d", minutes) %></span>
+        <span class="cyber-hero__unit-label">min</span>
+      </div>
+      <span class="cyber-hero__sep" aria-hidden="true">:</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="seconds"><%= format("%02d", seconds) %></span>
+        <span class="cyber-hero__unit-label">seg</span>
+      </div>
+    </div>
+  </div>
+
+  <%# TODO: replace with cyber-wow.webp %>
+  <%= image_tag "guitar.jpeg", class: "cyber-hero__image", alt: "Joven tocando una guitarra eléctrica naranja" %>
+</section>
+
+<section class="cyber-deals" aria-labelledby="cyber-deals-title">
+  <header class="cyber-deals__header">
+    <h2 id="cyber-deals-title" class="cyber-deals__title">⚡ Ofertas destacadas</h2>
+    <%= link_to "Ver todas →", root_path(anchor: "products"), class: "cyber-deals__all" %>
+  </header>
+
+  <ul class="cyber-deals__grid">
+    <% deals.each do |deal| %>
+      <li class="cyber-deals__card">
+        <span class="cyber-deals__badge">-<%= deal[:discount] %>%</span>
+        <div class="cyber-deals__media" aria-hidden="true">
+          <span class="cyber-deals__icon"><%= deal[:icon] %></span>
+        </div>
+        <h3 class="cyber-deals__name"><%= deal[:name] %></h3>
+        <p class="cyber-deals__prices">
+          <s class="cyber-deals__old">S/ <%= number_with_delimiter(deal[:old_price], delimiter: ",") %></s>
+          <strong class="cyber-deals__new">S/ <%= number_with_delimiter(deal[:new_price], delimiter: ",") %></strong>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</section>

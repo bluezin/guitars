@@ -1,23 +1,7 @@
 <% content_for(:title, t(".page_title")) %>
 <% content_for(:description, t(".page_description")) %>
 
-<section class="hero-slider">
-  <div class="slides">
-    <div class="slide active" style="background-image: url('<%= asset_path('banner1.webp') %>'"></div>
-    <div class="slide" style="background-image: url('<%= asset_path('banner2.webp') %>'"></div>
-    <div class="slide" style="background-image: url('<%= asset_path('banner3.webp') %>'"></div>
-  </div>
-
-  <div class="hero-content">
-    <h1 class="animated-title">
-      <span><%= t(".mainTitle.first") %></span>
-      <span><%= t(".mainTitle.second") %></span>
-      <span><%= t(".mainTitle.third") %></span>
-    </h1>
-    <p style="padding: 0px 16px"><%= t(".mainSecondaryText") %></p>
-    <%= link_to "Explorar catálogo", root_path(anchor: "products"), class: "hero-btn" %>
-  </div>
-</section>
+<%= render "cyber_wow" %>
 
 <div class="container-general" id="products">
   <% if authenticated? %>
