@@ -1,0 +1,47 @@
+<%
+  ends_at = Time.current.end_of_day
+  remaining_seconds = (ends_at - Time.current).to_i.clamp(0, 86_400)
+  hours = remaining_seconds / 3600
+  minutes = (remaining_seconds % 3600) / 60
+  seconds = remaining_seconds % 60
+%>
+
+<section class="cyber-hero" aria-labelledby="cyber-hero-title">
+  <div class="cyber-hero__content">
+    <p class="cyber-hero__pill">⚡ FULL DAY · SOLO HOY</p>
+    <h1 id="cyber-hero-title" class="cyber-hero__title">CYBER WOW</h1>
+    <p class="cyber-hero__subtitle">
+      Ofertas que suenan increíble<br>
+      en productos seleccionados
+    </p>
+    <p class="cyber-hero__offer">hasta <strong>20% OFF</strong></p>
+    <p class="cyber-hero__note">*Válido hoy hasta las 11:59 p. m. o hasta agotar stock.</p>
+    <%= link_to "Ver ofertas →", root_path(anchor: "products"), class: "cyber-hero__cta" %>
+
+    <div
+      class="cyber-hero__countdown"
+      role="timer"
+      data-controller="countdown"
+      data-countdown-ends-at-value="<%= ends_at.iso8601 %>"
+    >
+      <span class="cyber-sr-only">Tiempo restante de la oferta</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="hours"><%= format("%02d", hours) %></span>
+        <span class="cyber-hero__unit-label">horas</span>
+      </div>
+      <span class="cyber-hero__sep" aria-hidden="true">:</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="minutes"><%= format("%02d", minutes) %></span>
+        <span class="cyber-hero__unit-label">min</span>
+      </div>
+      <span class="cyber-hero__sep" aria-hidden="true">:</span>
+      <div class="cyber-hero__unit">
+        <span class="cyber-hero__digits" data-countdown-target="seconds"><%= format("%02d", seconds) %></span>
+        <span class="cyber-hero__unit-label">seg</span>
+      </div>
+    </div>
+  </div>
+
+  <%# TODO: replace with cyber-wow.webp %>
+  <%= image_tag "guitar.jpeg", class: "cyber-hero__image", alt: "Joven tocando una guitarra eléctrica naranja" %>
+</section>
