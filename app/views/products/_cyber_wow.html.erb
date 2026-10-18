@@ -1,11 +1,4 @@
 <%
-  # Sample offers until product discounts exist in the backend.
-  deals = [
-    { name: "Guitarra acústica cedro", old_price: 1200, new_price: 960, discount: 20, icon: "🎸" },
-    { name: "Go Acustic preamplificador", old_price: 250, new_price: 212, discount: 15, icon: "🎛️" },
-    { name: "Sistema Presonic", old_price: 320, new_price: 256, discount: 20, icon: "🔊" },
-    { name: "Cuerdas D'Addario", old_price: 60, new_price: 54, discount: 10, icon: "🎵" }
-  ]
   ends_at = Time.current.end_of_day
   remaining_seconds = (ends_at - Time.current).to_i.clamp(0, 86_400)
   hours = remaining_seconds / 3600
@@ -51,27 +44,4 @@
 
   <%# TODO: replace with cyber-wow.webp %>
   <%= image_tag "guitar.jpeg", class: "cyber-hero__image", alt: "Joven tocando una guitarra eléctrica naranja" %>
-</section>
-
-<section class="cyber-deals" aria-labelledby="cyber-deals-title">
-  <header class="cyber-deals__header">
-    <h2 id="cyber-deals-title" class="cyber-deals__title">⚡ Ofertas destacadas</h2>
-    <%= link_to "Ver todas →", root_path(anchor: "products"), class: "cyber-deals__all" %>
-  </header>
-
-  <ul class="cyber-deals__grid">
-    <% deals.each do |deal| %>
-      <li class="cyber-deals__card">
-        <span class="cyber-deals__badge">-<%= deal[:discount] %>%</span>
-        <div class="cyber-deals__media" aria-hidden="true">
-          <span class="cyber-deals__icon"><%= deal[:icon] %></span>
-        </div>
-        <h3 class="cyber-deals__name"><%= deal[:name] %></h3>
-        <p class="cyber-deals__prices">
-          <s class="cyber-deals__old">S/ <%= number_with_delimiter(deal[:old_price], delimiter: ",") %></s>
-          <strong class="cyber-deals__new">S/ <%= number_with_delimiter(deal[:new_price], delimiter: ",") %></strong>
-        </p>
-      </li>
-    <% end %>
-  </ul>
 </section>
