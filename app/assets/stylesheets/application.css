@@ -1177,3 +1177,31 @@ p {
     width: 100%;
   }
 }
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e63946;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 5;
+}
+
+.list-products-item {
+  position: relative;
+}
+
+.price-original {
+  text-decoration: line-through;
+  color: #9ca3af;
+  margin-right: 6px;
+}
+
+.price-sale {
+  color: #e63946;
+  font-weight: 700;
+}

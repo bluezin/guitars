@@ -64,6 +64,8 @@
           <%= image_tag product.featured_image, class: "list-products-item-img", style: "width: 100%; cursor: pointer; height: 200px; box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.12);" if product.featured_image.attached? %>
         <% end %>
 
+        <%= sale_percent_badge(product) %>
+
         <% if product.inventory_count > 0 %>
           <div class="container-buttons-cart">
             <%= button_to t("common.addToCart"), add_product_order_path(@order, product_id: product.id), method: :post, class: "button-add-cart" %>
@@ -80,7 +82,7 @@
           <br />
           <br />
           <strong><%= t(".price") %>:</strong>
-          <span><%= format_price(product.price) %> <%= t("common.currency") %></span>
+          <span><%= price_html(product) %> <%= t("common.currency") %></span>
           <br />
           <br />
           <strong><%= t(".availableQuantities") %>:</strong>

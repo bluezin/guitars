@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
     item.quantity ||=0
     item.quantity += final_number
-    item.price = product.price
+    item.price = product.sale_price
     item.save
 
     redirect_to products_path, notice: t("orders.addedProduct")
