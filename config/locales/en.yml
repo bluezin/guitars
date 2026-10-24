@@ -73,6 +73,16 @@ en:
     productRemoved: "Product removed from cart"
     updatedAmount: "Updated amount"
   products:
+    cyber_wow_hero:
+      pill: "Cyber Wow · %{date}"
+      up_to: "Up to"
+      copy: "Discounts across the whole store. Deals that sound amazing, today only."
+      countdown_label: "Time left in the sale"
+      units: { days: "days", hours: "hours", minutes: "min", seconds: "sec" }
+      see_offers: "See deals →"
+      see_catalog: "See catalog"
+      image_alt: "Guitarist playing a Cyber Wow sale guitar"
+      sticker: "SITEWIDE"
     show:
       seeMore: "View more images and/or videos of the product"
       price: "Price"
