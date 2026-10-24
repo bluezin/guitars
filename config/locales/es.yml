@@ -73,6 +73,16 @@ es:
     productRemoved: "Producto eliminado del carrito"
     updatedAmount: "Cantidad actualizada"
   products:
+    cyber_wow_hero:
+      pill: "Cyber Wow · %{date}"
+      up_to: "Hasta"
+      copy: "Descuentos en toda la tienda. Ofertas que suenan increíble, solo por hoy."
+      countdown_label: "Tiempo restante de la oferta"
+      units: { days: "días", hours: "horas", minutes: "min", seconds: "seg" }
+      see_offers: "Ver ofertas →"
+      see_catalog: "Ver catálogo"
+      image_alt: "Guitarrista tocando una guitarra en oferta Cyber Wow"
+      sticker: "EN TODO"
     show:
       seeMore: "Ver más imagenes y/o videos del producto"
       price: "Precio"

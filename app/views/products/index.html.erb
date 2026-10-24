@@ -1,6 +1,9 @@
 <% content_for(:title, t(".page_title")) %>
 <% content_for(:description, t(".page_description")) %>
 
+<% if Sale.active? %>
+  <%= render "cyber_wow_hero" %>
+<% else %>
 <section class="hero-slider">
   <div class="slides">
     <div class="slide active" style="background-image: url('<%= asset_path('banner1.webp') %>'"></div>
@@ -18,6 +21,7 @@
     <%= link_to "Explorar catálogo", root_path(anchor: "products"), class: "hero-btn" %>
   </div>
 </section>
+<% end %>
 
 <div class="container-general" id="products">
   <% if authenticated? %>

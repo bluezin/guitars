@@ -1,0 +1,36 @@
+<%# Hero de Cyber Wow de todo el día: se muestra cuando Sale.active? (descuento global) %>
+<% percent = Sale.percent %>
+<% ends_at = Time.current.end_of_day %>
+<section class="cyber-hero" aria-labelledby="cyber-hero-title">
+  <div class="cyber-hero-inner">
+    <div class="cyber-hero-text">
+      <span class="cyber-hero-pill"><%= t(".pill", date: Date.current.strftime("%d/%m")) %></span>
+      <h1 id="cyber-hero-title" class="cyber-hero-title">CYBER WOW</h1>
+      <p class="cyber-hero-upto">
+        <%= t(".up_to") %> <span class="cyber-hero-percent"><%= percent %>% OFF</span>
+      </p>
+      <p class="cyber-hero-copy"><%= t(".copy") %></p>
+
+      <div class="cyber-countdown" data-controller="countdown"
+           data-countdown-ends-at-value="<%= ends_at.iso8601 %>"
+           role="timer" aria-live="off" aria-label="<%= t(".countdown_label") %>">
+        <% %w[days hours minutes seconds].each do |unit| %>
+          <div class="cyber-countdown-box">
+            <span class="cyber-countdown-num" data-countdown-target="<%= unit %>">00</span>
+            <span class="cyber-countdown-unit"><%= t(".units.#{unit}") %></span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="cyber-hero-actions">
+        <%= link_to t(".see_offers"), root_path(anchor: "products"), class: "cyber-btn cyber-btn-primary" %>
+        <%= link_to t(".see_catalog"), products_path(anchor: "products"), class: "cyber-btn cyber-btn-outline" %>
+      </div>
+    </div>
+
+    <div class="cyber-hero-media">
+      <%= image_tag "men.png", alt: t(".image_alt"), class: "cyber-hero-img" %>
+      <span class="cyber-hero-sticker" aria-hidden="true">-<%= percent %>%<small><%= t(".sticker") %></small></span>
+    </div>
+  </div>
+</section>
